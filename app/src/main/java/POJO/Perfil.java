@@ -1,5 +1,7 @@
 package POJO;
 
+// Clase POJO Perfil
+
 public class Perfil {
     private int id;
     private String nombre, poblacion, fecha_nac, perfil_spotify, usuario, mail;
