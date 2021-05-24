@@ -28,7 +28,6 @@ public class SigninActivity extends AppCompatActivity {
     DatePickerDialog picker;
 
     RequestQueue requestQueue;
-
     private static final String URL1 = "http://192.168.1.93/signin.php";
 
     @Override
@@ -59,10 +58,6 @@ public class SigninActivity extends AppCompatActivity {
         String poblacion = etPoblacion.getText().toString();
 
         createUser(usuario,pass,mail,fecha_nac,nombre,poblacion);
-
-        //Toast.makeText(this, "Datos: " + usuario + ", " + pass + ", " + mail + ", " + fechanacDate, Toast.LENGTH_LONG).show();
-        //Toast toast = Toast.makeText(this, usuario, Toast.LENGTH_LONG);
-        //toast.show();
     }
 
     private void createUser(final String usuario, final String pass, final String mail, final String fecha_nac, final String nombre, final String poblacion) {
