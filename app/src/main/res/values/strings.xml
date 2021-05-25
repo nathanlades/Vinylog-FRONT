@@ -6,17 +6,18 @@
     <string name="login">Log in</string>
     <string name="user">Usuario</string>
     <string name="pass">Contraseña</string>
-    <string name="registrarse">No tienes cuenta? Regístrate</string>
-    <string name="forgot">Has olvidado la contraseña?</string>
+    <string name="registrarse">¿No tienes una cuenta? Regístrate.</string>
+    <string name="forgot">¿Has olvidado tus credenciales? Obtén ayuda.</string>
 
     <!--  String de signin.xml layout -->
     <string name="userName">Nombre de usuario</string>
     <string name="pass1">Contraseña</string>
-    <string name="pass2">Repita contraseña</string>
+    <string name="pass2">Repetir contraseña</string>
     <string name="mail">Email</string>
     <string name="fechaNac">Fecha de nacimiento</string>
     <string name="bt_enviar">Registrarse</string>
     <string name="title_activity_signin">SigninActivity</string>
     <string name="nombre">Nombre real</string>
+    <string name="poblacion">Población</string>
 
 </resources>

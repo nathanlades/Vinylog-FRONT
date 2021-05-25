@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view){
-         validarUsuario("http://192.168.1.93/login.php");
+         validarUsuario("http://95.39.184.89/vinyl/login.php");
     }
 
     private void validarUsuario(String URL){
