@@ -34,7 +34,7 @@ public class Signin2 extends AppCompatActivity {
     String nombre, usuario, pass, mail, localidad, fecha_nac, passHash;
     Spinner spLocalidad;
     RequestQueue requestQueue;
-    private static final String URL1 = "http://192.168.1.93/signin.php";
+    private static final String URL1 = "http://95.39.184.89/vinyl/signin.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
