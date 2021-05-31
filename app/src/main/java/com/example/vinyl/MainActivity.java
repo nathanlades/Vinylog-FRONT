@@ -20,6 +20,8 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validarUsuario(String URL){
+        
         StringRequest stringRequest  = new StringRequest (Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                        Perfil perfil = new Gson().fromJson(response, Perfil.class); //Con esta línea convierto la String JSON en un objeto de la clase Perfil
                         if(respuestaJson.contains("{")){
                            //Aquí lo que hacer si el login es correcto
-                            btLogin.setText("Bienvenido, " + perfil.getNombre());
+                            Toast.makeText(MainActivity.this, "Bienvenido, " + perfil.getNombre(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivity.this, SigninActivity.class);
                             intent.putExtra("PerfilIntent", perfil);
                             startActivity(intent);
@@ -74,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
                             getIntent().getSerializableExtra("PerfilIntent");
                              */
                        } else {
-                           Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT); //Por alguna razón, este Toast no sale nunca, pero si que entra bien en el bucle
-                           btLogin.setText("Error en los datos");
+                           Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show();
                        }
                     }
                 },

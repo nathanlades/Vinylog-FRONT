@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="156dp"
         android:layout_marginEnd="101dp"
         android:ems="10"
         android:hint="@string/user"
@@ -60,11 +60,10 @@
         android:hint="@string/mail"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_pass2" />
 
-    <EditText
+    EditText
         android:id="@+id/et_fecha_nac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,42 +81,17 @@
         app:layout_constraintTop_toBottomOf="@+id/et_mail" />
 
     <Button
-        android:id="@+id/bt_signin"
+        android:id="@+id/bt_signin2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="157dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="161dp"
         android:onClick="registrar"
         android:text="@string/bt_enviar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_poblacion" />
-
-    <EditText
-        android:id="@+id/et_nombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/nombre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_fecha_nac" />
-
-    <EditText
-        android:id="@+id/et_poblacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/poblacion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/et_mail" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
