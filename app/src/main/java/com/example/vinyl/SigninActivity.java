@@ -7,22 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ShareActionProvider;
 import android.widget.Toast;
 import org.apache.commons.validator.routines.EmailValidator;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SigninActivity extends AppCompatActivity {
 
@@ -42,7 +30,7 @@ public class SigninActivity extends AppCompatActivity {
         etMail = findViewById(R.id.et_mail);
         etFecha_nac = findViewById(R.id.et_fecha_nac);
         etNombre = findViewById(R.id.et_nombre);
-        btRegistro = findViewById(R.id.bt_signin2);
+        btRegistro = findViewById(R.id.bt_signin);
 //        spLocalidad = findViewById(R.id.sp_poblacion);
 //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sp_poblacion, android.R.layout.simple_spinner_dropdown_item);
 //        spLocalidad.setAdapter(adapter);

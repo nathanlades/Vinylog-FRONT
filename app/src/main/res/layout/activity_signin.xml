@@ -5,93 +5,138 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background">
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:backgroundTint="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_logo_white_top"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            app:srcCompat="@mipmap/logo_blank" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="69dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:srcCompat="@mipmap/logo_blank_rojo" />
+
+    <TextView
+        android:id="@+id/tv_registro1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="74dp"
+        android:text="@string/datos_acceso"
+        android:fontFamily="@font/cambria"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
     <EditText
         android:id="@+id/et_usuario"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="156dp"
-        android:layout_marginEnd="101dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/user"
         android:inputType="textPersonName"
+        android:hint="@string/userName"
+        android:fontFamily="@font/cambria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_registro1" />
 
     <EditText
         android:id="@+id/et_pass1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="101dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/pass1"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/pass1"
+        android:fontFamily="@font/cambria"
+        app:layout_constraintEnd_toEndOf="@+id/et_usuario"
+        app:layout_constraintStart_toStartOf="@+id/et_usuario"
         app:layout_constraintTop_toBottomOf="@+id/et_usuario" />
 
     <EditText
         android:id="@+id/et_pass2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/pass2"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/pass2"
+        android:fontFamily="@font/cambria"
+        app:layout_constraintEnd_toEndOf="@+id/et_pass1"
+        app:layout_constraintStart_toStartOf="@+id/et_pass1"
         app:layout_constraintTop_toBottomOf="@+id/et_pass1" />
 
     <EditText
         android:id="@+id/et_mail"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/mail"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/mail"
+        android:fontFamily="@font/cambria"
+        app:layout_constraintEnd_toEndOf="@+id/et_pass2"
+        app:layout_constraintStart_toStartOf="@+id/et_pass2"
         app:layout_constraintTop_toBottomOf="@+id/et_pass2" />
 
-    EditText
-        android:id="@+id/et_fecha_nac"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/bt_signin"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/fechaNac"
-        android:inputType="date"
-        android:focusable="false"
-        android:clickable="true"
-        android:onClick="showDatePickerDialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:text="@string/bt_registro1"
+        android:backgroundTint="@color/vinyl_red"
+        android:fontFamily="@font/nougat"
+        android:onClick="registrar"
+        app:layout_constraintEnd_toEndOf="@+id/et_mail"
+        app:layout_constraintStart_toStartOf="@+id/et_mail"
         app:layout_constraintTop_toBottomOf="@+id/et_mail" />
 
-    <Button
-        android:id="@+id/bt_signin2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="157dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="161dp"
-        android:onClick="registrar"
-        android:text="@string/bt_enviar"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_mail" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_logo_white_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            app:srcCompat="@mipmap/logo_blank" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

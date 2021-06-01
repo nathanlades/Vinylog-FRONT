@@ -34,6 +34,7 @@ public class Signin2 extends AppCompatActivity {
     String nombre, usuario, pass, mail, localidad, fecha_nac, passHash;
     Spinner spLocalidad;
     RequestQueue requestQueue;
+    //private static final String URL1 = "http://192.168.1.93/signin.php";
     private static final String URL1 = "http://95.39.184.89/vinyl/signin.php";
 
     @Override
@@ -41,9 +42,9 @@ public class Signin2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin2);
         spLocalidad = findViewById(R.id.sp_poblacion);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sp_poblacion, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sp_poblacion, R.layout.custom_spinner);
         spLocalidad.setAdapter(adapter);
-        btRegistro = findViewById(R.id.bt_signin2);
+        btRegistro = findViewById(R.id.bt_signin);
         etFecha_nac = findViewById(R.id.et_fecha_nac);
         etNombre = findViewById(R.id.et_nombre);
 

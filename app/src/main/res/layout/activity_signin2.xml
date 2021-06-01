@@ -4,62 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@color/white"
     tools:context=".Signin2">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:backgroundTint="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_logo_white_top"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            app:srcCompat="@mipmap/logo_blank" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="69dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:srcCompat="@mipmap/logo_blank_rojo" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="74dp"
+        android:text="@string/datos_acceso2"
+        android:fontFamily="@font/cambria"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
     <EditText
         android:id="@+id/et_fecha_nac"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="100dp"
-        android:clickable="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
-        android:focusable="false"
+        android:inputType="textPersonName"
         android:hint="@string/fechaNac"
-        android:inputType="date"
+        android:fontFamily="@font/cambria"
+        android:clickable="true"
+        android:focusable="false"
         android:onClick="showDatePickerDialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/bt_signin2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="157dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="161dp"
-        android:onClick="registrar"
-        android:text="@string/bt_enviar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_poblacion" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/et_nombre"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/nombre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/cambria"
+        app:layout_constraintEnd_toEndOf="@+id/et_fecha_nac"
+        app:layout_constraintStart_toStartOf="@+id/et_fecha_nac"
         app:layout_constraintTop_toBottomOf="@+id/et_fecha_nac" />
 
     <Spinner
         android:id="@+id/sp_poblacion"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="100dp"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:entries="@array/sp_poblacion"
+        android:fontFamily="@font/cambria"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="@+id/et_nombre"
+        app:layout_constraintStart_toStartOf="@+id/et_nombre"
         app:layout_constraintTop_toBottomOf="@+id/et_nombre" />
+
+    <Button
+        android:id="@+id/bt_signin2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/bt_registro2"
+        android:backgroundTint="@color/vinyl_red"
+        android:fontFamily="@font/nougat"
+        android:onClick="registrar"
+        app:layout_constraintEnd_toEndOf="@+id/sp_poblacion"
+        app:layout_constraintStart_toStartOf="@+id/sp_poblacion"
+        app:layout_constraintTop_toBottomOf="@+id/sp_poblacion" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_logo_white_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            app:srcCompat="@mipmap/logo_blank" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

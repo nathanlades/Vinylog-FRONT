@@ -3,11 +3,12 @@
 
     <!-- Strings del activity login -->
     <string name="bienvenido">Bienvenido a Vinyl</string>
-    <string name="login">Log in</string>
-    <string name="user">Usuario</string>
+    <string name="login">Login</string>
+    <string name="user">Usuario o email</string>
     <string name="pass">Contraseña</string>
     <string name="registrarse">¿No tienes una cuenta? Regístrate.</string>
     <string name="forgot">¿Has olvidado tus credenciales? Obtén ayuda.</string>
+    <string name="google_login">Iniciar sesión con Google</string>
 
     <!--  String de signin.xml layout -->
     <string name="userName">Nombre de usuario</string>
@@ -15,9 +16,12 @@
     <string name="pass2">Repetir contraseña</string>
     <string name="mail">Email</string>
     <string name="fechaNac">Fecha de nacimiento</string>
-    <string name="bt_enviar">Registrarse</string>
+    <string name="bt_registro1">Continuar</string>
+    <string name="bt_registro2">Registrarse</string>
     <string name="title_activity_signin">SigninActivity</string>
     <string name="nombre">Nombre real</string>
+    <string name="datos_acceso">Empecemos introduciendo \nlos datos de acceso</string>
+    <string name="datos_acceso2">Para terminar, \ndanos algo de información de ti</string>
     <string-array name="sp_poblacion">
         <item>Provincia</item>
         <item>A Coruña</item>
