@@ -18,6 +18,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
+import org.apache.commons.validator.routines.EmailValidator;
 import org.json.JSONObject;
 
 import java.security.MessageDigest;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View view){
          validarUsuario("http://95.39.184.89/vinyl/login.php");
+         //validarUsuario("http://192.168.1.93/login.php");
     }
 
     private void validarUsuario(String URL){
@@ -99,5 +101,18 @@ public class MainActivity extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    public void forgotPass(View view){
+        Intent i = new Intent(this, ForgotPass.class);
+
+        //Comprobamos que en el login haya puesto el email y no el usuario y, en ese caso
+        //lo pasamos al siguiente Acitivty para ahorrarle trabajo al usuario
+        EmailValidator validator = EmailValidator.getInstance();
+        if(validator.isValid(etUsuario.getText().toString())){
+            i.putExtra("mail",etUsuario.getText().toString());
+        }
+
+        startActivity(i);
     }
 }

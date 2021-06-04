@@ -12,13 +12,12 @@ import org.apache.commons.validator.routines.EmailValidator;
 
 import com.android.volley.RequestQueue;
 
+import POJO.Perfil;
+
 public class SigninActivity extends AppCompatActivity {
 
     EditText etUsuario, etPass1, etPass2, etMail, etFecha_nac, etNombre, etPoblacion;
     Button btRegistro;
-
-    RequestQueue requestQueue;
-    private static final String URL1 = "http://95.39.184.89/vinyl/signin.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

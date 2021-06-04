@@ -78,4 +78,12 @@
         <item>Zaragoza</item>
     </string-array>
 
+    <!--  String de ForgotPass.xml layout -->
+    <string name="tv_forgot">No te preocupes, \nindícanos tu email y te mandaremos un \ncódigo para que puedas seleccionar una contraseña nueva</string>
+    <string name="bt_recovery">Recuperar contraseña</string>
+    <string name="bt_cambioPass">Cambiar contraseña</string>
+    <string name="et_verificacion">Código de verificación</string>
+    <string name="et_passChange1">Nueva contraseña</string>
+    <string name="et_passChange2">Repita la nueva contraseña</string>
+
 </resources>
