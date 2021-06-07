@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FeedActivity">
+
+    <LinearLayout
+        android:id="@+id/menuSuperior"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:backgroundTint="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_logo_white_top"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:contentDescription="@string/logo_blank_description"
+            app:srcCompat="@mipmap/logo_blank" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/cambria"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/menuInferior"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/feedPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/vinyl_selected_red"
+            android:contentDescription="@string/feed_blank_description"
+            android:padding="6dp"
+            app:srcCompat="@mipmap/feed_blank" />
+
+        <ImageView
+            android:id="@+id/searchPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_blank_description"
+            android:padding="6dp"
+            app:srcCompat="@mipmap/search_blank" />
+
+        <ImageView
+            android:id="@+id/calendarPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/calendar_blank_description"
+            android:padding="6dp"
+            app:srcCompat="@mipmap/calendar_blank" />
+
+        <ImageView
+            android:id="@+id/profilePage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/profile_blank_description"
+            android:padding="6dp"
+            app:srcCompat="@mipmap/profile_blank" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

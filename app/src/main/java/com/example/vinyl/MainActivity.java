@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         if(respuestaJson.contains("{")){
                            //Aquí lo que hacer si el login es correcto
                             Toast.makeText(MainActivity.this, "Bienvenido, " + perfil.getNombre(), Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivity.this, SigninActivity.class);
+                            Intent intent = new Intent(MainActivity.this, FeedActivity.class);
                             intent.putExtra("PerfilIntent", perfil);
                             startActivity(intent);
                             /*Vale, tienes que poner en el intent el siguiente Activity al que tenga que ir la app,
