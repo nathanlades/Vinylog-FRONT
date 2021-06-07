@@ -78,4 +78,11 @@
         <item>Zaragoza</item>
     </string-array>
 
+    <!-- String de los contentDescription -->
+    <string name="logo_blank_description">Vinylog</string>
+    <string name="feed_blank_description">Feed</string>
+    <string name="search_blank_description">Buscador</string>
+    <string name="calendar_blank_description">Calendario</string>
+    <string name="profile_blank_description">Perfil</string>
+
 </resources>
