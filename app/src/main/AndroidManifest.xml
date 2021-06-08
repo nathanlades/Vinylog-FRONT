@@ -12,10 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vinyl"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ForgotPass2"></activity>
+        <activity android:name=".Profile"></activity>
+        <activity android:name=".Calendar" />
+        <activity android:name=".Buscador" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ForgotPass2" />
         <activity android:name=".ForgotPass" />
         <activity android:name=".Signin2" />
-        <activity android:name=".FeedActivity"></activity>
+        <activity android:name=".FeedActivity" />
         <activity android:name=".SigninActivity" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
@@ -25,7 +29,7 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".Portada">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

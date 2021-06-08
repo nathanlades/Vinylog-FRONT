@@ -34,8 +34,8 @@ public class Signin2 extends AppCompatActivity {
     String nombre, usuario, pass, mail, localidad, fecha_nac, passHash;
     Spinner spLocalidad;
     RequestQueue requestQueue;
-    //private static final String URL1 = "http://192.168.1.93/signin.php";
-    private static final String URL1 = "http://95.39.184.89/vinyl/signin.php";
+    //private static final String URL = "http://95.39.184.89/vinyl/signin.php";
+    private static String URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class Signin2 extends AppCompatActivity {
         usuario = extras.getString("usuarioIntent");
         pass = extras.getString("passIntent");
         mail = extras.getString("mailIntent");
+        URL = getResources().getString(R.string.url)+"signin.php";
 
         requestQueue = Volley.newRequestQueue(this);
     }
@@ -106,7 +107,7 @@ public class Signin2 extends AppCompatActivity {
     private void createUser(final String usuario, final String pass, final String mail, final String fecha_nac, final String nombre, final String poblacion) {
 
         StringRequest stringRequest = new StringRequest(
-                Request.Method.POST, URL1,
+                Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
