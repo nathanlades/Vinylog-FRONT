@@ -3,6 +3,7 @@ package com.example.vinyl;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     EditText etUsuario, etPass;
     Button btLogin;
 
+    //la string del usuario también puede contener el email,
+    //ambos valen indistintamente para el login
+    String usuario, pass, perfilJSON;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         etUsuario = findViewById(R.id.et_user);
         etPass = findViewById(R.id.et_pass);
         btLogin = findViewById(R.id.bt_login);
+
+        recuperarPreferencias();
 
         Bundle extras = getIntent().getExtras();
         if(extras!=null){
@@ -53,8 +60,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view){
-         validarUsuario("http://95.39.184.89/vinyl/login.php");
-         //validarUsuario("http://192.168.1.93/login.php");
+        usuario = etUsuario.getText().toString();
+        pass = etPass.getText().toString();
+        validarUsuario(getResources().getString(R.string.url)+"login.php");
     }
 
     private void validarUsuario(String URL){
@@ -62,22 +70,19 @@ public class MainActivity extends AppCompatActivity {
         StringRequest stringRequest  = new StringRequest (Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                       //Por alguna razón no hace bien el bucle si comparo directamente el "response" en vez de
-                        // hacer primero una String, por tanto la String respuestaJson solo vale para
+                        //Por alguna razón no hace bien el bucle si comparo directamente el "response" en vez de
+                        // hacer primero una String, por tanto la String perfilJSON solo vale para
                         //que entre bien en el bucle.
-                       String respuestaJson = response;
-                       Perfil perfil = new Gson().fromJson(response, Perfil.class); //Con esta línea convierto la String JSON en un objeto de la clase Perfil
-                        if(respuestaJson.contains("{")){
-                           //Aquí lo que hacer si el login es correcto
-                            Toast.makeText(MainActivity.this, "Bienvenido, " + perfil.getNombre(), Toast.LENGTH_SHORT).show();
+                        perfilJSON = response;
+                        Perfil perfil = new Gson().fromJson(response, Perfil.class); //Con esta línea convierto la String JSON en un objeto de la clase Perfil
+                        if(perfilJSON.contains("{")){
+                            //Aquí lo que hacer si el login es correcto
+                            guardarPreferencias();
+                            Toast.makeText(MainActivity.this, "Bienvenido, " + perfil.getNombre(), Toast.LENGTH_SHORT).show();;
                             Intent intent = new Intent(MainActivity.this, FeedActivity.class);
-                            intent.putExtra("PerfilIntent", perfil);
+                            intent.putExtra("perfilIntent", perfil);
                             startActivity(intent);
-                            /*Vale, tienes que poner en el intent el siguiente Activity al que tenga que ir la app,
-                            el intent te pasa un objeto de la clase Perfil con todos los datos de la tabla Perfil
-                            de la persona logeada. Para recuperarlo, tendrás que utilizar la siguiente línea:
-                            getIntent().getSerializableExtra("PerfilIntent");
-                             */
+                            finish();
                        } else {
                            Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show();
                        }
@@ -93,9 +98,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String,String>();
-                parametros.put("usuario", etUsuario.getText().toString());
+/*                parametros.put("usuario", etUsuario.getText().toString());
                 parametros.put("mail", etUsuario.getText().toString());
-                parametros.put("pass", etPass.getText().toString());
+                parametros.put("pass", etPass.getText().toString());*/
+                parametros.put("usuario", usuario);
+                parametros.put("mail", usuario);
+                parametros.put("pass", pass);
                 return parametros;
             }
         };
@@ -114,5 +122,26 @@ public class MainActivity extends AppCompatActivity {
         }
 
         startActivity(i);
+    }
+
+    /* Estos métodos sirven para hacer el login persistente y cargar
+    * directamente la sesión del usuario en concreto directamente
+    * tras el activity de carga de la aplicación */
+    private void guardarPreferencias(){
+        SharedPreferences sharedPreferences = getSharedPreferences("preferenciasLogin",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("usuario", usuario);
+        editor.putString("pass", pass);
+        editor.putBoolean("session", true);
+        //Como no se puede guardar un objeto, guardamos la string JSON con la que formamos el objeto
+        //en la activity de carga.
+        editor.putString("perfilJSON", perfilJSON);
+        editor.commit();
+    }
+
+    private void recuperarPreferencias(){
+        SharedPreferences sharedPreferences = getSharedPreferences("preferenciasLogin", MODE_PRIVATE);
+        etUsuario.setText(sharedPreferences.getString("usuario", ""));
+        etPass.setText(sharedPreferences.getString("pass", ""));
     }
 }

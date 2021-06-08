@@ -132,7 +132,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/iv_logo_white_bottom"
+            android:id="@+id/iv_feed_buscador"
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             app:srcCompat="@mipmap/logo_blank" />

@@ -131,7 +131,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/iv_logo_white_bottom"
+            android:id="@+id/iv_feed_buscador"
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             app:srcCompat="@mipmap/logo_blank" />
@@ -142,6 +142,7 @@
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_marginEnd="6dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tv_login_google"
         app:layout_constraintEnd_toStartOf="@+id/tv_login_google"
         app:layout_constraintTop_toTopOf="@+id/tv_login_google"
@@ -152,9 +153,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:textColor="@color/vinyl_red"
-        android:text="@string/google_login"
         android:fontFamily="@font/cambria"
+        android:text="@string/google_login"
+        android:textColor="@color/vinyl_red"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_forgotpass" />

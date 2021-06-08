@@ -1,10 +1,13 @@
 package POJO;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
-public class Perfil implements Serializable {
+public class Perfil implements Parcelable {
     private int id;
-    private String nombre, poblacion, fecha_nac, perfil_spotify, usuario, mail;
+    private String nombre, poblacion, fecha_nac, perfil_spotify, usuario, mail, foto;
 
     public Perfil(){
 
@@ -12,7 +15,7 @@ public class Perfil implements Serializable {
 
     //Recordar que el id se genera automáticamente con el registro en la db, así que no debemos definirlo nosotros
     //si fuésemos a hacer un registro nuevo, deberíamos dejarlo en null
-    public Perfil(int id, String nombre, String poblacion, String fecha_nac, String perfil_spotify, String usuario, String mail) {
+    public Perfil(int id, String nombre, String poblacion, String fecha_nac, String perfil_spotify, String usuario, String mail, String foto) {
         this.id = id;
         this.nombre = nombre;
         this.poblacion = poblacion;
@@ -20,7 +23,39 @@ public class Perfil implements Serializable {
         this.perfil_spotify = perfil_spotify;
         this.usuario = usuario;
         this.mail = mail;
+        this.foto = foto;
     }
+
+    protected Perfil(Parcel in) {
+        id = in.readInt();
+        nombre = in.readString();
+        poblacion = in.readString();
+        fecha_nac = in.readString();
+        perfil_spotify = in.readString();
+        usuario = in.readString();
+        mail = in.readString();
+        foto = in.readString();
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public static final Creator<Perfil> CREATOR = new Creator<Perfil>() {
+        @Override
+        public Perfil createFromParcel(Parcel in) {
+            return new Perfil(in);
+        }
+
+        @Override
+        public Perfil[] newArray(int size) {
+            return new Perfil[size];
+        }
+    };
 
     public void setId(){
         this.id = id;
@@ -89,5 +124,21 @@ public class Perfil implements Serializable {
                 ", usuario='" + usuario + '\'' +
                 ", mail='" + mail + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(nombre);
+        dest.writeString(poblacion);
+        dest.writeString(fecha_nac);
+        dest.writeString(perfil_spotify);
+        dest.writeString(usuario);
+        dest.writeString(mail);
     }
 }

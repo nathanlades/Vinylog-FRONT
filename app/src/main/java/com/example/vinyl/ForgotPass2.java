@@ -28,7 +28,7 @@ public class ForgotPass2 extends AppCompatActivity {
     String mail;
     RequestQueue requestQueue;
     //String URL = "http://192.168.1.93/cambioPass.php";
-    String URL = "http://95.39.184.89/vinyl/cambioPass.php";
+    String URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class ForgotPass2 extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         verificacion = extras.getInt("verificacion");
         mail = extras.getString("mail");
+        URL = getResources().getString(R.string.url)+"cambioPass.php";
 
         requestQueue = Volley.newRequestQueue(this);
     }

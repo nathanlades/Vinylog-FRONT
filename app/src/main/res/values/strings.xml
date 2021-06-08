@@ -93,4 +93,17 @@
     <string name="calendar_blank_description">Calendario</string>
     <string name="profile_blank_description">Perfil</string>
 
+    <!-- String de activity_buscador.xml -->
+    <string name="et_buscador">Búsqueda</string>
+    <string name="bt_destacados">Destacados</string>
+    <string name="bt_usuarios">Usuarios</string>
+    <string name="bt_temas">Temas</string>
+    <string name="bt_discos">Álbumes</string>
+    <string name="bt_artistas">Artistas</string>
+
+
+    <!-- STRING PARA LA URL DE CONEXIÓN -->
+    <string name="url">http://95.39.184.89/vinyl/</string>
+    <string name="url_local_will">http://192.168.1.93/</string>
+
 </resources>
