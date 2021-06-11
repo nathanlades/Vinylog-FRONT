@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivProfilePic"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/profile_pic_description"
+        android:padding="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvUser"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:contentDescription="@string/user_description"
+        android:gravity="center_vertical"
+        android:text="@string/bt_usuarios"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/ivProfilePic"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ibMenu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTintMode="screen"
+        android:contentDescription="@string/btn_menu_description"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/menu" />
+
+    <ImageView
+        android:id="@+id/ivCover"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:contentDescription="@string/cover_description"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivProfilePic"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCover">
+
+        <ImageButton
+            android:id="@+id/ibLike"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:backgroundTintMode="screen"
+            android:contentDescription="@string/btn_like_description"
+            android:scaleType="centerInside"
+            app:srcCompat="@mipmap/like" />
+
+        <ImageButton
+            android:id="@+id/ibComments"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:backgroundTintMode="screen"
+            android:contentDescription="@string/btn_comments_description"
+            android:scaleType="centerInside"
+            app:srcCompat="@mipmap/comments" />
+
+        <ImageButton
+            android:id="@+id/ibShare"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:backgroundTintMode="screen"
+            android:contentDescription="@string/btn_share_description"
+            android:scaleType="centerInside"
+            app:srcCompat="@mipmap/share" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="10dp"
+        android:orientation="vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/title"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
