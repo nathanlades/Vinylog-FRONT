@@ -93,7 +93,7 @@ public class FeedActivity extends AppCompatActivity {
                 title = new String[i], text = new String[i];
 
         for (Resena resena : resenaArray) {
-            profilePic[resenaArray.indexOf(resena)] = resena.getFoto();
+            profilePic[resenaArray.indexOf(resena)] = resena.getImagen();
             user[resenaArray.indexOf(resena)] = resena.getUsuario();
             cover[resenaArray.indexOf(resena)] = resena.getImagen();
             title[resenaArray.indexOf(resena)] = resena.getTitulo();

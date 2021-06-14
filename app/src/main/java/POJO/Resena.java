@@ -5,15 +5,16 @@ import android.os.Parcelable;
 
 public class Resena implements Parcelable {
      int id, puntuacion;
-     String titulo,texto,imagen,fecha;
+     String titulo,texto,imagen,fecha,usuario;
 
-    public Resena(int id, int puntuacion, String titulo, String texto, String imagen, String fecha) {
+    public Resena(int id, int puntuacion, String titulo, String texto, String imagen, String fecha, String usuario) {
         this.id = id;
         this.puntuacion = puntuacion;
         this.titulo = titulo;
         this.texto = texto;
         this.imagen = imagen;
         this.fecha = fecha;
+        this.usuario = usuario;
     }
 
     protected Resena(Parcel in) {
@@ -23,6 +24,7 @@ public class Resena implements Parcelable {
         texto = in.readString();
         imagen = in.readString();
         fecha = in.readString();
+        usuario = in.readString();
     }
 
     public static final Creator<Resena> CREATOR = new Creator<Resena>() {
@@ -46,7 +48,16 @@ public class Resena implements Parcelable {
                 ", texto='" + texto + '\'' +
                 ", imagen='" + imagen + '\'' +
                 ", fecha='" + fecha + '\'' +
+                ", usuario='" + usuario + '\'' +
                 '}';
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public int getId() {
@@ -110,5 +121,6 @@ public class Resena implements Parcelable {
         dest.writeString(texto);
         dest.writeString(imagen);
         dest.writeString(fecha);
+        dest.writeString(usuario);
     }
 }
