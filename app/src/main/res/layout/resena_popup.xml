@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/comment" />
+
+            <EditText
+                android:id="@+id/et_artista_resena_titulo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:hint="@string/et_artista_resena_titulo"
+                android:fontFamily="@font/cambria"
+                app:layout_constraintEnd_toStartOf="@+id/iv_artista_resena_puntuacion1"
+                app:layout_constraintStart_toStartOf="@id/et_artista_resena"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <ImageView
+                android:id="@+id/iv_artista_resena_puntuacion1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="136dp"
+                app:layout_constraintBottom_toBottomOf="@id/et_artista_resena_titulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/et_artista_resena_titulo"
+                app:srcCompat="@mipmap/feed_grey" />
+            <ImageView
+                android:id="@+id/iv_artista_resena_puntuacion2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintStart_toEndOf="@id/iv_artista_resena_puntuacion1"
+                app:layout_constraintTop_toTopOf="@id/iv_artista_resena_puntuacion1"
+                app:srcCompat="@mipmap/feed_grey"
+                />
+            <ImageView
+                android:id="@+id/iv_artista_resena_puntuacion3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintStart_toEndOf="@id/iv_artista_resena_puntuacion2"
+                app:layout_constraintTop_toTopOf="@id/iv_artista_resena_puntuacion1"
+                app:srcCompat="@mipmap/feed_grey"
+                />
+            <ImageView
+                android:id="@+id/iv_artista_resena_puntuacion4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintStart_toEndOf="@id/iv_artista_resena_puntuacion3"
+                app:layout_constraintTop_toTopOf="@id/iv_artista_resena_puntuacion1"
+                app:srcCompat="@mipmap/feed_grey"
+                />
+
+            <ImageView
+                android:id="@+id/iv_artista_resena_puntuacion5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintStart_toEndOf="@id/iv_artista_resena_puntuacion4"
+                app:layout_constraintTop_toTopOf="@id/iv_artista_resena_puntuacion1"
+                app:srcCompat="@mipmap/feed_grey" />
+
+            <EditText
+                android:id="@+id/et_artista_resena"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:fontFamily="@font/cambria"
+                android:gravity="start|top"
+                android:hint="@string/et_artista_resena"
+                android:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_artista_resena_titulo" />
+
+            <Button
+                android:id="@+id/bt_artista_resena"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/bt_artista_resena"
+                android:backgroundTint="@color/vinyl_red"
+                android:fontFamily="@font/nougat"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="@+id/et_artista_resena"
+                app:layout_constraintStart_toStartOf="@+id/et_artista_resena"
+                app:layout_constraintTop_toBottomOf="@+id/et_artista_resena" />
+
+            <TextView
+                android:id="@+id/tv_artista_resena_puntuacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_artista_resena_titulo"
+                android:visibility="gone"/>
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

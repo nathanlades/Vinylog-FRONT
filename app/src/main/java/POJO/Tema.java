@@ -9,6 +9,17 @@ public class Tema implements Parcelable {
     //la foto se saca con un innerjoin con las tablas tema_disco y disco, pongo el campo aquí
     //para hacerlo más fácil a la hora de implementar el objeto JSON
 
+    String artista;
+
+    public Tema(int id, int ano, int duracion, int puntuacion, String nombre, String foto, String artista) {
+        this.id = id;
+        this.ano = ano;
+        this.duracion = duracion;
+        this.puntuacion = puntuacion;
+        this.nombre = nombre;
+        this.foto = foto;
+        this.artista = artista;
+    }
 
     public Tema(int id, int ano, int duracion, int puntuacion, String nombre, String foto) {
         this.id = id;
@@ -34,6 +45,7 @@ public class Tema implements Parcelable {
         puntuacion = in.readInt();
         nombre = in.readString();
         foto = in.readString();
+        artista = in.readString();
     }
 
     public static final Creator<Tema> CREATOR = new Creator<Tema>() {
@@ -48,6 +60,14 @@ public class Tema implements Parcelable {
         }
     };
 
+    public String getArtista() {
+        return artista;
+    }
+
+    public void setArtista(String artista) {
+        this.artista = artista;
+    }
+
     @Override
     public String toString() {
         return "Tema{" +
@@ -57,6 +77,7 @@ public class Tema implements Parcelable {
                 ", puntuacion=" + puntuacion +
                 ", nombre='" + nombre + '\'' +
                 ", foto='" + foto + '\'' +
+                ", artista='" + artista + '\'' +
                 '}';
     }
 
@@ -121,5 +142,6 @@ public class Tema implements Parcelable {
         dest.writeInt(puntuacion);
         dest.writeString(nombre);
         dest.writeString(foto);
+        dest.writeString(artista);
     }
 }

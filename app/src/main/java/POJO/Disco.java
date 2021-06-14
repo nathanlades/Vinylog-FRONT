@@ -6,7 +6,7 @@ import android.os.Parcelable;
 public class Disco implements Parcelable {
 
     int id, ano, duracion;
-    String nombre, portada;
+    String nombre, portada, texto;
     float puntuacion;
 
     //Atención, este campo es solo para realizar de manera más sencilla los INNER JOIN de mysql,
@@ -15,25 +15,30 @@ public class Disco implements Parcelable {
     String artista; ///////////////
     /////////////////
 
-    public Disco(){
 
-    }
-
-    public Disco(int ano, int duracion, String nombre, String portada, float puntuacion, String artista) {
+    public Disco(int id, int ano, int duracion, String nombre, String portada, String texto, float puntuacion) {
+        this.id = id;
         this.ano = ano;
         this.duracion = duracion;
         this.nombre = nombre;
         this.portada = portada;
+        this.texto = texto;
+        this.puntuacion = puntuacion;
+    }
+
+    public Disco(int id, int ano, int duracion, String nombre, String portada, String texto, float puntuacion, String artista) {
+        this.id = id;
+        this.ano = ano;
+        this.duracion = duracion;
+        this.nombre = nombre;
+        this.portada = portada;
+        this.texto = texto;
         this.puntuacion = puntuacion;
         this.artista = artista;
     }
 
-    public Disco(int ano, int duracion, String nombre, String portada, float puntuacion ) {
-        this.ano = ano;
-        this.duracion = duracion;
-        this.nombre = nombre;
-        this.portada = portada;
-        this.puntuacion = puntuacion;
+    public Disco(){
+
     }
 
     protected Disco(Parcel in) {
@@ -42,7 +47,9 @@ public class Disco implements Parcelable {
         duracion = in.readInt();
         nombre = in.readString();
         portada = in.readString();
+        texto = in.readString();
         puntuacion = in.readFloat();
+        artista = in.readString();
     }
 
     public static final Creator<Disco> CREATOR = new Creator<Disco>() {
@@ -56,6 +63,20 @@ public class Disco implements Parcelable {
             return new Disco[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Disco{" +
+                "id=" + id +
+                ", ano=" + ano +
+                ", duracion=" + duracion +
+                ", nombre='" + nombre + '\'' +
+                ", portada='" + portada + '\'' +
+                ", texto='" + texto + '\'' +
+                ", puntuacion=" + puntuacion +
+                ", artista='" + artista + '\'' +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -97,6 +118,14 @@ public class Disco implements Parcelable {
         this.portada = portada;
     }
 
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
     public float getPuntuacion() {
         return puntuacion;
     }
@@ -114,19 +143,6 @@ public class Disco implements Parcelable {
     }
 
     @Override
-    public String toString() {
-        return "Disco{" +
-                "id=" + id +
-                ", ano=" + ano +
-                ", duracion=" + duracion +
-                ", nombre='" + nombre + '\'' +
-                ", portada='" + portada + '\'' +
-                ", puntuacion=" + puntuacion +
-                ", artista=" + artista +
-                '}';
-    }
-
-    @Override
     public int describeContents() {
         return 0;
     }
@@ -138,6 +154,7 @@ public class Disco implements Parcelable {
         dest.writeInt(duracion);
         dest.writeString(nombre);
         dest.writeString(portada);
+        dest.writeString(texto);
         dest.writeFloat(puntuacion);
         dest.writeString(artista);
     }

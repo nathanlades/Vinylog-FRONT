@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_calendar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Calendar">
@@ -25,7 +26,7 @@
             app:srcCompat="@mipmap/logo_blank" />
     </LinearLayout>
 
-<!-- CÓDIGO AQUÍ ####################################################### -->
+    <!-- CÓDIGO AQUÍ ####################################################### -->
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -44,8 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/feed_blank_description"
-            android:padding="6dp"
             android:onClick="fromCalendartoFeed"
+            android:padding="6dp"
             app:srcCompat="@mipmap/feed_blank" />
 
         <ImageView
@@ -54,8 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_blank_description"
-            android:padding="6dp"
             android:onClick="fromCalendartoSearch"
+            android:padding="6dp"
             app:srcCompat="@mipmap/search_blank" />
 
         <ImageView
@@ -74,8 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/profile_blank_description"
-            android:padding="6dp"
             android:onClick="fromCalendartoProfile"
+            android:padding="6dp"
             app:srcCompat="@mipmap/profile_blank" />
 
     </LinearLayout>

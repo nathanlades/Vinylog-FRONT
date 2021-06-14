@@ -12,7 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vinyl"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".ResenaActivity" />
+        <activity
+            android:name=".ArtistaActivity"
+            android:parentActivityName=".Buscador" />
+        <activity android:name=".DiscoActivity" />
+        <activity android:name=".TemaActivity" />
+        <activity android:name=".UsuarioActivity" />
+        <activity android:name=".Profile" />
         <activity android:name=".Calendar" />
         <activity android:name=".Buscador" />
         <activity android:name=".MainActivity" />

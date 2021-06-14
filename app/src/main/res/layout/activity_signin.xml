@@ -116,6 +116,7 @@
         android:backgroundTint="@color/vinyl_red"
         android:fontFamily="@font/nougat"
         android:onClick="registrar"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="@+id/et_mail"
         app:layout_constraintStart_toStartOf="@+id/et_mail"
         app:layout_constraintTop_toBottomOf="@+id/et_mail" />

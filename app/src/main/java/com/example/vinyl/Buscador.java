@@ -34,7 +34,7 @@ import POJO.Perfil;
 import POJO.Tema;
 
 public class Buscador extends AppCompatActivity {
-    RecyclerView rv;
+    RecyclerView recyclerView;
     EditText et_buscador;
     ImageView iv_buscador;
     Button bt_destacados, bt_usuarios, bt_temas, bt_discos, bt_artistas;
@@ -48,10 +48,12 @@ public class Buscador extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscador);
-        rv = findViewById(R.id.rv);
+        recyclerView = findViewById(R.id.rv);
         et_buscador = findViewById(R.id.et_buscador);
         iv_buscador = findViewById(R.id.iv_perfil_perfil);
         bt_destacados = findViewById(R.id.bt_destacados);
+        //Aquí hacemos que el botón de destacados no se muestre
+        bt_destacados.setVisibility(View.GONE);
         bt_usuarios = findViewById(R.id.bt_usuarios);
         bt_temas = findViewById(R.id.bt_temas);
         bt_discos = findViewById(R.id.bt_discos);
@@ -111,7 +113,7 @@ public class Buscador extends AppCompatActivity {
                     List<Disco> discoArray = gson.fromJson(response, discoListType);
                     mostrarDiscos(discoArray);
                 } else {
-                    rv.setVisibility(View.INVISIBLE);
+                    recyclerView.setVisibility(View.INVISIBLE);
                     Toast.makeText(Buscador.this, "No hay nada en la base de datos con ese nombre", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -142,7 +144,7 @@ public class Buscador extends AppCompatActivity {
                     List<Perfil> perfilArray = gson.fromJson(response, perfilListType);
                     mostrarPerfil(perfilArray);
                 } else {
-                    rv.setVisibility(View.INVISIBLE);
+                    recyclerView.setVisibility(View.INVISIBLE);
                     Toast.makeText(Buscador.this, "No hay nada en la base de datos con ese nombre", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -174,7 +176,7 @@ public class Buscador extends AppCompatActivity {
                     List<Artista> artistaArray = gson.fromJson(response, artistaListType);
                     mostrarArtista(artistaArray);
                 } else {
-                    rv.setVisibility(View.INVISIBLE);
+                    recyclerView.setVisibility(View.INVISIBLE);
                     Toast.makeText(Buscador.this, "No hay nada en la base de datos con ese nombre", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -205,7 +207,7 @@ public class Buscador extends AppCompatActivity {
                     List<Tema> temaArray = gson.fromJson(response, temaListType);
                     mostrarTema(temaArray);
                 } else {
-                    rv.setVisibility(View.INVISIBLE);
+                    recyclerView.setVisibility(View.INVISIBLE);
                     Toast.makeText(Buscador.this, "No hay nada en la base de datos con ese nombre", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -239,11 +241,19 @@ public class Buscador extends AppCompatActivity {
             portada[discoArray.indexOf(disco)] = disco.getPortada();
         }
 
-        rv.setVisibility(View.INVISIBLE);
+        recyclerView.setVisibility(View.INVISIBLE);
         MyAdapter myAdapter = new MyAdapter(this, nombre,tipo,portada);
-        rv.setAdapter(myAdapter);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setVisibility(View.VISIBLE);
+        myAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Buscador.this, DiscoActivity.class);
+                intent.putExtra("Disco",discoArray.get(recyclerView.getChildAdapterPosition(v)));
+                startActivity(intent);
+            }
+        });
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setVisibility(View.VISIBLE);
 
     }
 
@@ -258,11 +268,19 @@ public class Buscador extends AppCompatActivity {
             portada[perfilArray.indexOf(perfil)] = perfil.getFoto();
         }
 
-        rv.setVisibility(View.INVISIBLE);
+        recyclerView.setVisibility(View.INVISIBLE);
         MyAdapter myAdapter = new MyAdapter(this, nombre,tipo,portada);
-        rv.setAdapter(myAdapter);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setVisibility(View.VISIBLE);
+        myAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Buscador.this, UsuarioActivity.class);
+                intent.putExtra("Usuario", perfilArray.get(recyclerView.getChildAdapterPosition(v)));
+                startActivity(intent);
+            }
+        });
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setVisibility(View.VISIBLE);
 
     }
 
@@ -277,11 +295,19 @@ public class Buscador extends AppCompatActivity {
             portada[artistaArray.indexOf(artista)] = artista.getFoto();
         }
 
-        rv.setVisibility(View.INVISIBLE);
+        recyclerView.setVisibility(View.INVISIBLE);
         MyAdapter myAdapter = new MyAdapter(this, nombre,tipo,portada);
-        rv.setAdapter(myAdapter);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setVisibility(View.VISIBLE);
+        myAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Buscador.this, ArtistaActivity.class);
+                intent.putExtra("Artista",artistaArray.get(recyclerView.getChildAdapterPosition(v)));
+                startActivity(intent);
+            }
+        });
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setVisibility(View.VISIBLE);
 
     }
 
@@ -296,11 +322,48 @@ public class Buscador extends AppCompatActivity {
             portada[temaArray.indexOf(tema)] = tema.getFoto();
         }
 
-        rv.setVisibility(View.INVISIBLE);
+        recyclerView.setVisibility(View.INVISIBLE);
         MyAdapter myAdapter = new MyAdapter(this, nombre,tipo,portada);
-        rv.setAdapter(myAdapter);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setVisibility(View.VISIBLE);
+        myAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cargarDiscodelTema(temaArray.get(recyclerView.getChildAdapterPosition(v)));
+            }
+
+            private void cargarDiscodelTema(Tema tema) {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://95.39.184.89/vinyl/cargarDiscodeTema.php", new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.contains("{")){
+                            Disco disco = new Gson().fromJson(response, Disco.class);
+                            Intent intent = new Intent(Buscador.this, DiscoActivity.class);
+                            intent.putExtra("Disco", disco);
+                            startActivity(intent);
+                        } else {
+                            recyclerView.setVisibility(View.INVISIBLE);
+                            Toast.makeText(Buscador.this, "No hay nada en la base de datos con ese nombre", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Buscador.this, "Error", Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String> params = new HashMap<String,String>();
+                        params.put("id",String.valueOf(tema.getId()));
+                        return params;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(Buscador.this);
+                requestQueue.add(stringRequest);
+            }
+        });
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setVisibility(View.VISIBLE);
 
     }
 
