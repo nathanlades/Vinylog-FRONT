@@ -8,7 +8,7 @@ import android.view.View;
 
 import POJO.Perfil;
 
-public class Profile extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     Perfil perfil;
 
@@ -21,19 +21,19 @@ public class Profile extends AppCompatActivity {
     }
 
     public void fromProfiletoSearch(View view){
-        Intent intent = new Intent(Profile.this,Buscador.class);
+        Intent intent = new Intent(ProfileActivity.this,Buscador.class);
         intent.putExtra("perfilIntent", perfil);
         startActivity(intent);
     }
 
     public void fromProfiletoFeed(View view){
-        Intent intent = new Intent(Profile.this,FeedActivity.class);
+        Intent intent = new Intent(ProfileActivity.this,FeedActivity.class);
         intent.putExtra("perfilIntent", perfil);
         startActivity(intent);
     }
 
     public void fromProfiletoCalendar(View view){
-        Intent intent = new Intent(Profile.this,Calendar.class);
+        Intent intent = new Intent(ProfileActivity.this,Calendar.class);
         intent.putExtra("perfilIntent", perfil);
         startActivity(intent);
     }
