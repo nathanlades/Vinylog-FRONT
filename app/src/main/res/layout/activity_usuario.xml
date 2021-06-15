@@ -164,40 +164,44 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/feedPage"
+            android:id="@+id/iv_feed_buscador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/vinyl_selected_red"
             android:contentDescription="@string/feed_blank_description"
             android:padding="6dp"
+            android:onClick="fromHeretoFeed"
             app:srcCompat="@mipmap/feed_blank" />
 
         <ImageView
-            android:id="@+id/searchPage"
+            android:id="@+id/iv_buscador_buscador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@color/vinyl_red"
             android:contentDescription="@string/search_blank_description"
             android:padding="6dp"
+            android:onClick="fromHeretoSearch"
             app:srcCompat="@mipmap/search_blank" />
 
         <ImageView
-            android:id="@+id/calendarPage"
+            android:id="@+id/iv_calendario_buscador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/calendar_blank_description"
             android:padding="6dp"
+            android:onClick="fromHeretoCalendar"
             app:srcCompat="@mipmap/calendar_blank" />
 
         <ImageView
-            android:id="@+id/profilePage"
+            android:id="@+id/iv_perfil_buscador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/profile_blank_description"
             android:padding="6dp"
+            android:onClick="fromHeretoProfile"
             app:srcCompat="@mipmap/profile_blank" />
 
     </LinearLayout>

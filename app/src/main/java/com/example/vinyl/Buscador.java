@@ -378,7 +378,7 @@ public class Buscador extends AppCompatActivity {
         startActivity(intent);
     }
     public void fromSearchtoProfile(View view){
-        Intent intent = new Intent(Buscador.this, Profile.class);
+        Intent intent = new Intent(Buscador.this, ProfileActivity.class);
         intent.putExtra("perfilIntent", perfil);
         startActivity(intent);
     }

@@ -5,11 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -22,14 +20,12 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import POJO.Disco;
 import POJO.Perfil;
 import POJO.Resena;
 
@@ -48,7 +44,8 @@ public class FeedActivity extends AppCompatActivity {
 
         URL = getResources().getString(R.string.url) + "cargarFeed.php";
 
-        perfil = getIntent().getParcelableExtra("perfilIntent");
+        //perfil = getIntent().getParcelableExtra("perfilIntent");
+        perfil = recuperarPreferencias();
 
         userLoggedIn = perfil.getUsuario();
 
@@ -120,8 +117,14 @@ public class FeedActivity extends AppCompatActivity {
     }
 
     public void fromFeedtoProfile(View view) {
-        Intent intent = new Intent(FeedActivity.this, Profile.class);
+        Intent intent = new Intent(FeedActivity.this, ProfileActivity.class);
         intent.putExtra("perfilIntent", perfil);
         startActivity(intent);
+    }
+
+    private Perfil recuperarPreferencias(){
+        SharedPreferences sharedPreferences = getSharedPreferences("preferenciasLogin", MODE_PRIVATE);
+        Perfil perfil = new Gson().fromJson(sharedPreferences.getString("perfilJSON" , ""), Perfil.class);
+        return perfil;
     }
 }

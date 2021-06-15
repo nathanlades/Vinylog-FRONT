@@ -409,4 +409,24 @@ public class ArtistaActivity extends AppCompatActivity {
         }
     }
 
+    public void fromHeretoSearch(View view) {
+        Intent intent = new Intent(this, Buscador.class);
+        startActivity(intent);
+    }
+
+    public void fromHeretoCalendar(View view) {
+        Intent intent = new Intent(this, Calendar.class);
+        startActivity(intent);
+    }
+
+    public void fromHeretoProfile(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void fromHeretoFeed(View view) {
+        Intent intent = new Intent(this, FeedActivity.class);
+        startActivity(intent);
+    }
+
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -246,5 +247,25 @@ public class ResenaActivity extends AppCompatActivity {
         Perfil perfil = new Gson().fromJson(perfilJSON,Perfil.class);
         String id_perfil = String.valueOf(perfil.getId());
         return id_perfil;
+    }
+
+    public void fromHeretoSearch(View view) {
+        Intent intent = new Intent(this, Buscador.class);
+        startActivity(intent);
+    }
+
+    public void fromHeretoCalendar(View view) {
+        Intent intent = new Intent(this, Calendar.class);
+        startActivity(intent);
+    }
+
+    public void fromHeretoProfile(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void fromHeretoFeed(View view) {
+        Intent intent = new Intent(this, FeedActivity.class);
+        startActivity(intent);
     }
 }

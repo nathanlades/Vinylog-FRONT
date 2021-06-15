@@ -30,11 +30,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="60dp"
         android:clickable="true"
+        android:onClick="nuevaResena"
         android:src="@mipmap/comment"
         android:tint="@color/white"
-        android:onClick="nuevaResena"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -81,7 +81,7 @@
         android:layout_marginEnd="16dp"
         android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@+id/iv_disco"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -221,5 +221,59 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_feed_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/feed_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoFeed"
+            app:srcCompat="@mipmap/feed_blank" />
+
+        <ImageView
+            android:id="@+id/iv_buscador_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/vinyl_red"
+            android:contentDescription="@string/search_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoSearch"
+            app:srcCompat="@mipmap/search_blank" />
+
+        <ImageView
+            android:id="@+id/iv_calendario_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/calendar_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoCalendar"
+            app:srcCompat="@mipmap/calendar_blank" />
+
+        <ImageView
+            android:id="@+id/iv_perfil_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/profile_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoProfile"
+            app:srcCompat="@mipmap/profile_blank" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

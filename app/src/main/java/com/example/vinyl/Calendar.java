@@ -33,7 +33,7 @@ public class Calendar extends AppCompatActivity {
     }
 
     public void fromCalendartoProfile(View view){
-        Intent intent = new Intent(Calendar.this,Profile.class);
+        Intent intent = new Intent(Calendar.this, ProfileActivity.class);
         intent.putExtra("perfilIntent", perfil);
         startActivity(intent);
     }
