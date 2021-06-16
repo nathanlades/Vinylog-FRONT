@@ -4,10 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,12 +40,14 @@ public class FeedActivity extends AppCompatActivity {
     String URL = "";
     Perfil perfil;
     String userLoggedIn = "";
+    ImageButton logOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
         rv = findViewById(R.id.rvFeed);
+        logOut = findViewById(R.id.ibLogOut);
 
         URL = getResources().getString(R.string.url) + "cargarFeed.php";
 
@@ -102,6 +109,17 @@ public class FeedActivity extends AppCompatActivity {
         rv.setAdapter(feed);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setVisibility(View.VISIBLE);
+    }
+
+    public void cerrarSesion(View view) {
+        SharedPreferences sharedPreferences = getSharedPreferences("preferenciasLogin", MODE_PRIVATE);
+        sharedPreferences.edit().clear().commit();
+
+        Toast.makeText(FeedActivity.this, "Has cerrado sesión", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void fromFeedtoSearch(View view) {
