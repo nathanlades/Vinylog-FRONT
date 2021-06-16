@@ -83,6 +83,15 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MyView
             }
         });
 
+        holder.iv_calendario_evento_entrada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri webPage = Uri.parse(evento.getEntradas());
+                Intent intent = new Intent(Intent.ACTION_VIEW, webPage);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -100,7 +109,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView tv_calendario_evento_dia, tv_calendario_evento_mes, tv_calendario_evento_nombre, tv_calendario_evento_hora, tv_calendario_evento_direccion;
-        ImageView iv_calendario_evento;
+        ImageView iv_calendario_evento, iv_calendario_evento_entrada;
         ImageButton ibt_calendario_evento_iramaps;
         String s;
 
@@ -113,6 +122,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MyView
             tv_calendario_evento_nombre = itemView.findViewById(R.id.tv_calendario_evento_nombre);
             iv_calendario_evento = itemView.findViewById(R.id.iv_calendario_evento);
             ibt_calendario_evento_iramaps = itemView.findViewById(R.id.ibt_calendario_evento_iramaps);
+            iv_calendario_evento_entrada = itemView.findViewById(R.id.iv_calendario_evento_entrada);
         }
     }
 

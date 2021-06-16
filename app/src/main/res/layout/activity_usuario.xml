@@ -56,6 +56,7 @@
                 android:layout_marginStart="10dp"
                 android:textSize="26sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/cambria"
                 android:fontFeatureSettings="smcp"
                 app:layout_constraintStart_toEndOf="@id/iv_usuario"
                 app:layout_constraintTop_toTopOf="@+id/iv_usuario"
@@ -67,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:textSize="16sp"
+                android:fontFamily="@font/cambria"
                 app:layout_constraintStart_toStartOf="@+id/tv_usuario_nombre"
                 app:layout_constraintTop_toBottomOf="@+id/tv_usuario_nombre" />
 
@@ -76,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tv_usuario_resena"
                 android:textStyle="bold"
+                android:fontFamily="@font/cambria"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_usuario_resenas_numero" />
 
@@ -86,6 +89,7 @@
                 android:layout_marginTop="4dp"
                 android:text="@string/tv_usuario_resenas_numero"
                 android:textStyle="bold"
+                android:fontFamily="@font/cambria"
                 app:layout_constraintEnd_toEndOf="@id/tv_usuario_resena"
                 app:layout_constraintStart_toStartOf="@+id/tv_usuario_resena"
                 app:layout_constraintTop_toTopOf="@id/tv_usuario_nombre" />
@@ -97,6 +101,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/tv_usuario_biografia_titulo"
                 android:textStyle="bold"
+                android:fontFamily="@font/cambria"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_usuario" />
 
@@ -104,6 +109,7 @@
                 android:id="@+id/tv_usuario_biografia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/cambria"
                 app:layout_constraintTop_toBottomOf="@id/tv_usuario_biografia_titulo"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -125,6 +131,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/vinyl_red"
                     android:text="@string/bt_usuario_mensaje"
+                    android:fontFamily="@font/nougat"
                     android:textAllCaps="false" />
 
                 <Button
@@ -134,6 +141,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/vinyl_red"
                     android:text="@string/bt_usuario_follow"
+                    android:fontFamily="@font/nougat"
                     android:textAllCaps="false"
                     android:onClick="seguir"/>
 

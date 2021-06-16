@@ -57,6 +57,7 @@ public class Buscador extends AppCompatActivity {
         bt_usuarios = findViewById(R.id.bt_usuarios);
         bt_temas = findViewById(R.id.bt_temas);
         bt_discos = findViewById(R.id.bt_discos);
+        bt_discos.setBackgroundColor(getResources().getColor(R.color.vinyl_selected_red));
         bt_artistas = findViewById(R.id.bt_artistas);
 
         URL = getResources().getString(R.string.url);
@@ -89,18 +90,31 @@ public class Buscador extends AppCompatActivity {
     public void tipoBusqueda(View view){
         Button button = findViewById(view.getId());
         String text = button.getText().toString();
-
+        clearButtons();
         if (text.equals(getResources().getString(R.string.bt_destacados))){
             op = 1;
+            bt_destacados.setBackgroundColor(getResources().getColor(R.color.vinyl_selected_red));
         } else if (text.equals(getResources().getString(R.string.bt_usuarios))){
+            bt_usuarios.setBackgroundColor(getResources().getColor(R.color.vinyl_selected_red));
             op = 2;
         } else if (text.equals(getResources().getString(R.string.bt_temas))){
+            bt_temas.setBackgroundColor(getResources().getColor(R.color.vinyl_selected_red));
             op = 3;
         } else if (text.equals(getResources().getString(R.string.bt_discos))){
+            bt_discos.setBackgroundColor(getResources().getColor(R.color.vinyl_selected_red));
             op = 4;
         } else if (text.equals(getResources().getString(R.string.bt_artistas))){
+            bt_artistas.setBackgroundColor(getResources().getColor(R.color.vinyl_selected_red));
             op = 5;
         }
+    }
+
+    private void clearButtons() {
+        bt_discos.setBackgroundColor(getResources().getColor(R.color.vinyl_red));
+        bt_destacados.setBackgroundColor(getResources().getColor(R.color.vinyl_red));
+        bt_artistas.setBackgroundColor(getResources().getColor(R.color.vinyl_red));
+        bt_usuarios.setBackgroundColor(getResources().getColor(R.color.vinyl_red));
+        bt_temas.setBackgroundColor(getResources().getColor(R.color.vinyl_red));
     }
 
     private void cargarDiscos(String URL, String busqueda) {
@@ -383,5 +397,3 @@ public class Buscador extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
-//Glide.with(this).load("http://192.168.1.93/images/IronMaiden_NumberOfBeast.jpg").into(iv_portada);

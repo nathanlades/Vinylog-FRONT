@@ -91,7 +91,7 @@ public class DiscoActivity extends AppCompatActivity {
                     List<Tema> temaArray = gson.fromJson(response, temaListType);
                     mostrarTemas(temaArray, disco.getPortada());
                 } else {
-                    Toast.makeText(DiscoActivity.this, "No hay canciones para este disco", Toast.LENGTH_SHORT).show();
+                    //No hay canciones
                 }
             }
         }, new Response.ErrorListener() {
@@ -127,7 +127,7 @@ public class DiscoActivity extends AppCompatActivity {
                     List<Resena> resenaArray = gson.fromJson(response, resenaListType);
                     cargarResenasPerfil(busqueda, resenaArray);
                 } else {
-                    Toast.makeText(DiscoActivity.this, "No hay reseñas", Toast.LENGTH_SHORT).show();
+                    //No hay reseñas
                 }
             }
         }, new Response.ErrorListener() {
