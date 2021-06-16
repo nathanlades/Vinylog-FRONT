@@ -47,8 +47,15 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.My
         Comentario comentario = comentarios.get(position);
 
         holder.tv_resena_comentario_nombreAutor.setText(perfil.getNombre());
-        String[] fecha = comentario.getFecha().split(" ");
-        holder.tv_resena_comentario_fecha.setText(fecha[0]);
+
+        holder.s = comentario.getFecha();
+        /* El primer corte separa la fecha de la hora; el segundo corte separa: 0-año, 1-mes, 2-dia
+         * El tercer corte separa 0-hora, 1-minutos, 2-segundos */
+        String[] primerCorte = holder.s.split(" ");
+        String[] segundoCorte = primerCorte[0].split("-");
+        String[] tercerCorte = primerCorte[1].split(":");
+        holder.tv_resena_comentario_fecha.setText(segundoCorte[2] + "-" + segundoCorte[1] + "-" + segundoCorte[0]);
+
         Glide.with(context).load(perfil.getFoto()).into(holder.iv_resena_comentario_autor);
 
         holder.s = comentario.getComentario();

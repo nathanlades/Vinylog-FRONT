@@ -404,6 +404,7 @@ public class ArtistaActivity extends AppCompatActivity {
             isFollowing("http://95.39.184.89/vinyl/seguirArtista.php",String.valueOf(artista.getId()),"true");
         } else {
             isFollowing("http://95.39.184.89/vinyl/noSeguirArtista.php",String.valueOf(artista.getId()),"false");
+            following = false;
             bt_artista_follow.setText("Follow");
             bt_artista_follow.setBackgroundColor(getResources().getColor(R.color.vinyl_red));
         }

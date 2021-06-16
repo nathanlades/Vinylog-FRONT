@@ -53,6 +53,14 @@ public class UsuarioResenaAdapter extends RecyclerView.Adapter<UsuarioResenaAdap
         holder.s = holder.s.substring(0, Math.min(holder.s.length(),200));
         holder.tv_artista_resena_texto.setText(holder.s + "...");
 
+        holder.s = resena.getFecha();
+        /* El primer corte separa la fecha de la hora; el segundo corte separa: 0-año, 1-mes, 2-dia
+         * El tercer corte separa 0-hora, 1-minutos, 2-segundos */
+        String[] primerCorte = holder.s.split(" ");
+        String[] segundoCorte = primerCorte[0].split("-");
+        String[] tercerCorte = primerCorte[1].split(":");
+        holder.tv_artista_resena_fecha.setText(segundoCorte[2] + "-" + segundoCorte[1] + "-" + segundoCorte[0]);
+
         //Establecemos la puntuacion
         int i = resena.getPuntuacion();
         switch (i){

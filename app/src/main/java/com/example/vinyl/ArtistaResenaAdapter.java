@@ -45,10 +45,16 @@ public class ArtistaResenaAdapter extends RecyclerView.Adapter<ArtistaResenaAdap
         Perfil perfil = perfiles.get(position);
         Resena resena = resenas.get(position);
         holder.tv_artista_resena_nombreAutor.setText(perfil.getNombre());
-        String[] fecha = resena.getFecha().split(" ");
-        holder.tv_artista_resena_fecha.setText(fecha[0]);
+
+        holder.s = resena.getFecha();
+        /* El primer corte separa la fecha de la hora; el segundo corte separa: 0-año, 1-mes, 2-dia
+         * El tercer corte separa 0-hora, 1-minutos, 2-segundos */
+        String[] primerCorte = holder.s.split(" ");
+        String[] segundoCorte = primerCorte[0].split("-");
+        String[] tercerCorte = primerCorte[1].split(":");
+        holder.tv_artista_resena_fecha.setText(segundoCorte[2] + "-" + segundoCorte[1] + "-" + segundoCorte[0]);
+
         holder.tv_artista_resena_comentarios.setText("1"); //Hay que modificar la búsqueda
-        //holder.tv_artista_resena_texto.setText(resena.getTexto());
 
         //Con estas líneas cortamos la String del texto para poner solo los 200 primeros caracteres.
         //Si se desea ver más, se habrá de hacer click para que cargue la vista de reseña y poder comentar y tal.
