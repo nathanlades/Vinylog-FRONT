@@ -7,6 +7,9 @@ public class Evento implements Parcelable {
     int id;
     String fecha,lugar,entradas,provincia,imagen;
 
+    //Esclusivo para facilitar la consulta a la db
+    String nombre; //(del grupo)
+
     protected Evento(Parcel in) {
         id = in.readInt();
         fecha = in.readString();
@@ -14,6 +17,15 @@ public class Evento implements Parcelable {
         entradas = in.readString();
         provincia = in.readString();
         imagen = in.readString();
+        nombre = in.readString();
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public static final Creator<Evento> CREATOR = new Creator<Evento>() {
@@ -37,6 +49,7 @@ public class Evento implements Parcelable {
                 ", entradas='" + entradas + '\'' +
                 ", provincia='" + provincia + '\'' +
                 ", imagen='" + imagen + '\'' +
+                ", nombre='" + nombre + '\'' +
                 '}';
     }
 
@@ -88,13 +101,14 @@ public class Evento implements Parcelable {
         this.imagen = imagen;
     }
 
-    public Evento(int id, String fecha, String lugar, String entradas, String provincia, String imagen) {
+    public Evento(int id, String fecha, String lugar, String entradas, String provincia, String imagen, String nombre) {
         this.id = id;
         this.fecha = fecha;
         this.lugar = lugar;
         this.entradas = entradas;
         this.provincia = provincia;
         this.imagen = imagen;
+        this.nombre = nombre;
     }
 
     @Override
@@ -110,5 +124,6 @@ public class Evento implements Parcelable {
         dest.writeString(entradas);
         dest.writeString(provincia);
         dest.writeString(imagen);
+        dest.writeString(nombre);
     }
 }

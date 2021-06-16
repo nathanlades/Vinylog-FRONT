@@ -146,4 +146,7 @@
     <string name="bt_usuario_follow">Follow</string>
     <string name="tv_usuario_resenas_numero">0</string>
 
+    <!-- Strings para la vista del calendario -->
+    <string name="tv_calendario_titulo">Próximos eventos de los artistas a los que sigues</string>
+
 </resources>
