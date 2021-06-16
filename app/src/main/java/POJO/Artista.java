@@ -5,15 +5,24 @@ import android.os.Parcelable;
 
 public class Artista implements Parcelable {
     int id, ano_inicio, ano_fin;
-    String nombre, nacionalidad, foto;
+    String nombre, nacionalidad, foto, bio;
 
-    public Artista(int id, int ano_inicio, int ano_fin, String nombre, String nacionalidad, String foto) {
+    public Artista(int id, int ano_inicio, int ano_fin, String nombre, String nacionalidad, String foto, String bio) {
         this.id = id;
         this.ano_inicio = ano_inicio;
         this.ano_fin = ano_fin;
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
         this.foto = foto;
+        this.bio = bio;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     protected Artista(Parcel in) {
@@ -23,6 +32,7 @@ public class Artista implements Parcelable {
         nombre = in.readString();
         nacionalidad = in.readString();
         foto = in.readString();
+        bio = in.readString();
     }
 
     public static final Creator<Artista> CREATOR = new Creator<Artista>() {
@@ -46,6 +56,7 @@ public class Artista implements Parcelable {
                 ", nombre='" + nombre + '\'' +
                 ", nacionalidad='" + nacionalidad + '\'' +
                 ", foto='" + foto + '\'' +
+                ", bio ='" + bio + '\'' +
                 '}';
     }
 
@@ -110,5 +121,6 @@ public class Artista implements Parcelable {
         dest.writeString(nombre);
         dest.writeString(nacionalidad);
         dest.writeString(foto);
+        dest.writeString(bio);
     }
 }

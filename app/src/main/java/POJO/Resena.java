@@ -4,61 +4,27 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Resena implements Parcelable {
+     int id, puntuacion;
+     String titulo,texto,imagen,fecha,usuario;
 
-    int id;
-    String titulo, texto, imagen, fecha;
-    float puntuacion;
-
-    // Atributos para facilitar los INNER JOIN
-    String usuario, foto;
-
-    public Resena() {
-    }
-
-    public Resena(int id, String titulo, String texto, String imagen, String fecha, float puntuacion) {
+    public Resena(int id, int puntuacion, String titulo, String texto, String imagen, String fecha, String usuario) {
         this.id = id;
+        this.puntuacion = puntuacion;
         this.titulo = titulo;
         this.texto = texto;
         this.imagen = imagen;
         this.fecha = fecha;
-        this.puntuacion = puntuacion;
-    }
-
-    public Resena(int id, String titulo, String texto, String imagen, String fecha, float puntuacion, String usuario, String foto) {
-        this.id = id;
-        this.titulo = titulo;
-        this.texto = texto;
-        this.imagen = imagen;
-        this.fecha = fecha;
-        this.puntuacion = puntuacion;
         this.usuario = usuario;
-        this.foto = foto;
     }
 
     protected Resena(Parcel in) {
         id = in.readInt();
+        puntuacion = in.readInt();
         titulo = in.readString();
         texto = in.readString();
         imagen = in.readString();
         fecha = in.readString();
-        puntuacion = in.readFloat();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(titulo);
-        dest.writeString(texto);
-        dest.writeString(imagen);
-        dest.writeString(fecha);
-        dest.writeFloat(puntuacion);
-        dest.writeString(usuario);
-        dest.writeString(foto);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
+        usuario = in.readString();
     }
 
     public static final Creator<Resena> CREATOR = new Creator<Resena>() {
@@ -73,12 +39,41 @@ public class Resena implements Parcelable {
         }
     };
 
+    @Override
+    public String toString() {
+        return "Resena{" +
+                "id=" + id +
+                ", likes=" + puntuacion +
+                ", titulo='" + titulo + '\'' +
+                ", texto='" + texto + '\'' +
+                ", imagen='" + imagen + '\'' +
+                ", fecha='" + fecha + '\'' +
+                ", usuario='" + usuario + '\'' +
+                '}';
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPuntuacion() {
+        return puntuacion;
+    }
+
+    public void setPuntuacion(int puntuacion) {
+        this.puntuacion = puntuacion;
     }
 
     public String getTitulo() {
@@ -113,41 +108,19 @@ public class Resena implements Parcelable {
         this.fecha = fecha;
     }
 
-    public float getPuntuacion() {
-        return puntuacion;
-    }
-
-    public void setPuntuacion(float puntuacion) {
-        this.puntuacion = puntuacion;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     @Override
-    public String toString() {
-        return "Resena{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", texto='" + texto + '\'' +
-                ", imagen='" + imagen + '\'' +
-                ", fecha='" + fecha + '\'' +
-                ", puntuacion=" + puntuacion +
-                ", usuario='" + usuario + '\'' +
-                ", foto='" + foto + '\'' +
-                '}';
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(puntuacion);
+        dest.writeString(titulo);
+        dest.writeString(texto);
+        dest.writeString(imagen);
+        dest.writeString(fecha);
+        dest.writeString(usuario);
     }
 }

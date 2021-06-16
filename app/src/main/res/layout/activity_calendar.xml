@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_calendar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Calendar">
@@ -25,7 +26,31 @@
             app:srcCompat="@mipmap/logo_blank" />
     </LinearLayout>
 
-<!-- CÓDIGO AQUÍ ####################################################### -->
+    <TextView
+        android:id="@+id/tv_calendario_titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/tv_calendario_titulo"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/cambria"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_calendario"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_calendario_titulo" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -44,8 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/feed_blank_description"
-            android:padding="6dp"
             android:onClick="fromCalendartoFeed"
+            android:padding="6dp"
             app:srcCompat="@mipmap/feed_blank" />
 
         <ImageView
@@ -54,8 +79,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_blank_description"
-            android:padding="6dp"
             android:onClick="fromCalendartoSearch"
+            android:padding="6dp"
             app:srcCompat="@mipmap/search_blank" />
 
         <ImageView
@@ -74,8 +99,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/profile_blank_description"
-            android:padding="6dp"
             android:onClick="fromCalendartoProfile"
+            android:padding="6dp"
             app:srcCompat="@mipmap/profile_blank" />
 
     </LinearLayout>

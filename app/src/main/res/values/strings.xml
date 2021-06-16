@@ -100,6 +100,8 @@
     <string name="btn_like_description">Like</string>
     <string name="btn_comments_description">Comentarios</string>
     <string name="btn_share_description">Enviar</string>
+    <string name="btn_new_review_description">Nueva reseña</string>
+    <string name="btn_log_out_description">Cerrar sesión</string>
 
     <!-- String de publicacion_feed.xml -->
     <string name="title">Título</string>
@@ -122,5 +124,31 @@
     <!-- STRING PARA LA URL DE CONEXIÓN -->
     <string name="url">http://95.39.184.89/vinyl/</string>
     <string name="url_local_will">http://192.168.1.93/</string>
+
+    <!-- String para la vista de Artista -->
+    <string name="tv_artista_bio_titulo">Biografía</string>
+    <string name="tv_artista_resena_titulo">Reseñas</string>
+    <string name="bt_artista_follow">Follow</string>
+    <string name="et_artista_resena">Escriba la reseña</string>
+    <string name="et_artista_resena_titulo">Escriba el título</string>
+    <string name="bt_artista_resena">Escribir Reseña</string>
+
+    <!-- String para la vista de reseña -->
+    <string name="tv_resena_comentario_titulo">Comentarios</string>
+    <string name="bt_resena_copmentario">Enviar</string>
+    <string name="et_resena_comentario">Escribir comentario</string>
+
+    <!-- String para la vista del disco -->
+    <string name="tv_disco_descripcion">Descripción</string>
+
+    <!-- Strings para la vista de usuario -->
+    <string name="tv_usuario_resena">Reseñas</string>
+    <string name="tv_usuario_biografia_titulo">Biografía</string>
+    <string name="bt_usuario_mensaje">Mensaje</string>
+    <string name="bt_usuario_follow">Follow</string>
+    <string name="tv_usuario_resenas_numero">0</string>
+
+    <!-- Strings para la vista del calendario -->
+    <string name="tv_calendario_titulo">Próximos eventos de los artistas a los que sigues</string>
 
 </resources>

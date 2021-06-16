@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp">
+
+    <TextView
+        android:id="@+id/tv_resena_comentario_nombreAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/cambria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_artista_resena_puntuacion1"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/tv_resena_comentario_nombreAutor"
+        app:layout_constraintTop_toTopOf="@id/tv_resena_comentario_fecha"
+        app:srcCompat="@mipmap/feed_grey" />
+    <ImageView
+        android:id="@+id/iv_artista_resena_puntuacion2"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        app:layout_constraintStart_toEndOf="@id/iv_artista_resena_puntuacion1"
+        app:layout_constraintTop_toTopOf="@id/tv_resena_comentario_fecha"
+        app:srcCompat="@mipmap/feed_grey"
+        />
+    <ImageView
+        android:id="@+id/iv_artista_resena_puntuacion3"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        app:layout_constraintStart_toEndOf="@id/iv_artista_resena_puntuacion2"
+        app:layout_constraintTop_toTopOf="@id/tv_resena_comentario_fecha"
+        app:srcCompat="@mipmap/feed_grey"
+        />
+    <ImageView
+        android:id="@+id/iv_resena_puntuacion4"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        app:layout_constraintStart_toEndOf="@id/iv_artista_resena_puntuacion3"
+        app:layout_constraintTop_toTopOf="@id/tv_resena_comentario_fecha"
+        app:srcCompat="@mipmap/feed_grey"
+        />
+
+    <ImageView
+        android:id="@+id/iv_artista_resena_puntuacion5"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toEndOf="@id/iv_resena_puntuacion4"
+        app:layout_constraintTop_toTopOf="@id/tv_resena_comentario_fecha"
+        app:srcCompat="@mipmap/feed_grey" />
+
+    <ImageView
+        android:id="@+id/iv_artista_resena_comentario"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="4dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/tv_artista_resena_comentarios"
+        app:layout_constraintTop_toTopOf="@id/tv_resena_comentario_fecha"
+        app:srcCompat="@mipmap/comment" />
+
+    <TextView
+        android:id="@+id/tv_artista_resena_comentarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="0"
+        android:textSize="12dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/tv_resena_comentario_fecha"
+        app:layout_constraintEnd_toStartOf="@id/tv_resena_comentario_fecha"
+        app:layout_constraintBottom_toBottomOf="@id/tv_resena_comentario_fecha"/>
+
+    <TextView
+        android:id="@+id/tv_resena_comentario_fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12/30/2020"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/cambria"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/v_artista_separador"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/tv_resena_comentario_nombreAutor"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_artista_resena_texto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/cambria"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_artista_separador" />
+</androidx.constraintlayout.widget.ConstraintLayout>

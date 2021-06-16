@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResenaActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:backgroundTint="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_logo_white_top"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            app:srcCompat="@mipmap/logo_blank" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_resena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="60dp"
+        android:clickable="true"
+        android:onClick="nuevaResena"
+        android:src="@mipmap/comment"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_disco"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gradient_overlay" />
+
+    <TextView
+        android:id="@+id/tv_disco"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/cambria"
+        android:fontFeatureSettings="smcp"
+        android:text="Titulo"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_disco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/iv_disco"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_resena_autor"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_resena_autor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="Autor"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/cambria"
+                app:layout_constraintBottom_toBottomOf="@id/iv_resena_autor"
+                app:layout_constraintStart_toEndOf="@id/iv_resena_autor" />
+
+            <ImageView
+                android:id="@+id/iv_artista_resena_puntuacion1"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="6dp"
+                app:layout_constraintStart_toEndOf="@id/tv_resena_autor"
+                app:layout_constraintTop_toTopOf="@id/tv_resena_autor"
+                app:srcCompat="@mipmap/feed_grey" />
+            <ImageView
+                android:id="@+id/iv_artista_resena_puntuacion2"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintStart_toEndOf="@id/iv_artista_resena_puntuacion1"
+                app:layout_constraintTop_toTopOf="@id/tv_resena_autor"
+                app:srcCompat="@mipmap/feed_grey"
+                />
+            <ImageView
+                android:id="@+id/iv_artista_resena_puntuacion3"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintStart_toEndOf="@id/iv_artista_resena_puntuacion2"
+                app:layout_constraintTop_toTopOf="@id/tv_resena_autor"
+                app:srcCompat="@mipmap/feed_grey"
+                />
+            <ImageView
+                android:id="@+id/iv_resena_puntuacion4"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintStart_toEndOf="@id/iv_artista_resena_puntuacion3"
+                app:layout_constraintTop_toTopOf="@id/tv_resena_autor"
+                app:srcCompat="@mipmap/feed_grey"
+                />
+
+            <ImageView
+                android:id="@+id/iv_artista_resena_puntuacion5"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintStart_toEndOf="@id/iv_resena_puntuacion4"
+                app:layout_constraintTop_toTopOf="@id/tv_resena_autor"
+                app:srcCompat="@mipmap/feed_grey" />
+
+            <TextView
+                android:id="@+id/tv_resena_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10/10/2000"
+                android:fontFamily="@font/cambria"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_resena_autor"
+                />
+
+            <TextView
+                android:id="@+id/tv_resena_texto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Texto"
+                android:fontFamily="@font/cambria"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_resena_autor" />
+
+            <View
+                android:id="@+id/v_separador1"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_resena_texto" />
+
+            <TextView
+                android:id="@+id/tv_resena_comentarios_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/tv_resena_comentario_titulo"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/cambria"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v_separador1" />
+
+            <ImageView
+                android:id="@+id/iv_resena_comentario"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintTop_toTopOf="@id/tv_resena_comentarios_titulo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_resena_comentarios_titulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@mipmap/comment"/>
+
+            <TextView
+                android:id="@+id/tv_resena_comentarios_numero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:text="0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_resena_comentarios_titulo"
+                app:layout_constraintEnd_toStartOf="@id/iv_resena_comentario"
+                app:layout_constraintTop_toTopOf="@id/tv_resena_comentarios_titulo" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_resena_comentarios"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                android:nestedScrollingEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_resena_comentarios_titulo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_feed_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/feed_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoFeed"
+            app:srcCompat="@mipmap/feed_blank" />
+
+        <ImageView
+            android:id="@+id/iv_buscador_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/vinyl_red"
+            android:contentDescription="@string/search_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoSearch"
+            app:srcCompat="@mipmap/search_blank" />
+
+        <ImageView
+            android:id="@+id/iv_calendario_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/calendar_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoCalendar"
+            app:srcCompat="@mipmap/calendar_blank" />
+
+        <ImageView
+            android:id="@+id/iv_perfil_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/profile_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoProfile"
+            app:srcCompat="@mipmap/profile_blank" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,14 +25,12 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import POJO.Disco;
 import POJO.Perfil;
 import POJO.Resena;
 
@@ -39,16 +40,19 @@ public class FeedActivity extends AppCompatActivity {
     String URL = "";
     Perfil perfil;
     String userLoggedIn = "";
+    ImageButton logOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
         rv = findViewById(R.id.rvFeed);
+        logOut = findViewById(R.id.ibLogOut);
 
         URL = getResources().getString(R.string.url) + "cargarFeed.php";
 
-        perfil = getIntent().getParcelableExtra("perfilIntent");
+        //perfil = getIntent().getParcelableExtra("perfilIntent");
+        perfil = recuperarPreferencias();
 
         userLoggedIn = perfil.getUsuario();
 
@@ -93,7 +97,7 @@ public class FeedActivity extends AppCompatActivity {
                 title = new String[i], text = new String[i];
 
         for (Resena resena : resenaArray) {
-            profilePic[resenaArray.indexOf(resena)] = resena.getFoto();
+            profilePic[resenaArray.indexOf(resena)] = resena.getImagen();
             user[resenaArray.indexOf(resena)] = resena.getUsuario();
             cover[resenaArray.indexOf(resena)] = resena.getImagen();
             title[resenaArray.indexOf(resena)] = resena.getTitulo();
@@ -105,6 +109,17 @@ public class FeedActivity extends AppCompatActivity {
         rv.setAdapter(feed);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setVisibility(View.VISIBLE);
+    }
+
+    public void cerrarSesion(View view) {
+        SharedPreferences sharedPreferences = getSharedPreferences("preferenciasLogin", MODE_PRIVATE);
+        sharedPreferences.edit().clear().commit();
+
+        Toast.makeText(FeedActivity.this, "Has cerrado sesión", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void fromFeedtoSearch(View view) {
@@ -120,8 +135,14 @@ public class FeedActivity extends AppCompatActivity {
     }
 
     public void fromFeedtoProfile(View view) {
-        Intent intent = new Intent(FeedActivity.this, Profile.class);
+        Intent intent = new Intent(FeedActivity.this, ProfileActivity.class);
         intent.putExtra("perfilIntent", perfil);
         startActivity(intent);
+    }
+
+    private Perfil recuperarPreferencias(){
+        SharedPreferences sharedPreferences = getSharedPreferences("preferenciasLogin", MODE_PRIVATE);
+        Perfil perfil = new Gson().fromJson(sharedPreferences.getString("perfilJSON" , ""), Perfil.class);
+        return perfil;
     }
 }

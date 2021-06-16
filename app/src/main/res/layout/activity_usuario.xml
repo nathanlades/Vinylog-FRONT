@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UsuarioActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:backgroundTint="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_logo_white_top"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            app:srcCompat="@mipmap/logo_blank" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@id/menuInferior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_usuario"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/tv_usuario_nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/cambria"
+                android:fontFeatureSettings="smcp"
+                app:layout_constraintStart_toEndOf="@id/iv_usuario"
+                app:layout_constraintTop_toTopOf="@+id/iv_usuario"
+                app:layout_constraintBottom_toBottomOf="@id/iv_usuario"/>
+
+            <TextView
+                android:id="@+id/tv_usuario_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/cambria"
+                app:layout_constraintStart_toStartOf="@+id/tv_usuario_nombre"
+                app:layout_constraintTop_toBottomOf="@+id/tv_usuario_nombre" />
+
+            <TextView
+                android:id="@+id/tv_usuario_resena"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_usuario_resena"
+                android:textStyle="bold"
+                android:fontFamily="@font/cambria"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_usuario_resenas_numero" />
+
+            <TextView
+                android:id="@+id/tv_usuario_resenas_numero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/tv_usuario_resenas_numero"
+                android:textStyle="bold"
+                android:fontFamily="@font/cambria"
+                app:layout_constraintEnd_toEndOf="@id/tv_usuario_resena"
+                app:layout_constraintStart_toStartOf="@+id/tv_usuario_resena"
+                app:layout_constraintTop_toTopOf="@id/tv_usuario_nombre" />
+
+            <TextView
+                android:id="@+id/tv_usuario_biografia_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/tv_usuario_biografia_titulo"
+                android:textStyle="bold"
+                android:fontFamily="@font/cambria"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_usuario" />
+
+            <TextView
+                android:id="@+id/tv_usuario_biografia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cambria"
+                app:layout_constraintTop_toBottomOf="@id/tv_usuario_biografia_titulo"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/ly_usuario_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_usuario_biografia">
+
+                <Button
+                    android:id="@+id/bt_usuario_mensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/vinyl_red"
+                    android:text="@string/bt_usuario_mensaje"
+                    android:fontFamily="@font/nougat"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/bt_usuario_follow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/vinyl_red"
+                    android:text="@string/bt_usuario_follow"
+                    android:fontFamily="@font/nougat"
+                    android:textAllCaps="false"
+                    android:onClick="seguir"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_usuario_resena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ly_usuario_menu" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/menuInferior"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_feed_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/feed_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoFeed"
+            app:srcCompat="@mipmap/feed_blank" />
+
+        <ImageView
+            android:id="@+id/iv_buscador_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/vinyl_red"
+            android:contentDescription="@string/search_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoSearch"
+            app:srcCompat="@mipmap/search_blank" />
+
+        <ImageView
+            android:id="@+id/iv_calendario_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/calendar_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoCalendar"
+            app:srcCompat="@mipmap/calendar_blank" />
+
+        <ImageView
+            android:id="@+id/iv_perfil_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/profile_blank_description"
+            android:padding="6dp"
+            android:onClick="fromHeretoProfile"
+            app:srcCompat="@mipmap/profile_blank" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

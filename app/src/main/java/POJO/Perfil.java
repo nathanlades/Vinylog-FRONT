@@ -7,23 +7,10 @@ import java.io.Serializable;
 
 public class Perfil implements Parcelable {
     private int id;
-    private String nombre, poblacion, fecha_nac, perfil_spotify, usuario, mail, foto;
+    private String nombre, poblacion, fecha_nac, perfil_spotify, usuario, mail, foto, biografia;
 
     public Perfil(){
 
-    }
-
-    //Recordar que el id se genera automáticamente con el registro en la db, así que no debemos definirlo nosotros
-    //si fuésemos a hacer un registro nuevo, deberíamos dejarlo en null
-    public Perfil(int id, String nombre, String poblacion, String fecha_nac, String perfil_spotify, String usuario, String mail, String foto) {
-        this.id = id;
-        this.nombre = nombre;
-        this.poblacion = poblacion;
-        this.fecha_nac = fecha_nac;
-        this.perfil_spotify = perfil_spotify;
-        this.usuario = usuario;
-        this.mail = mail;
-        this.foto = foto;
     }
 
     protected Perfil(Parcel in) {
@@ -35,14 +22,7 @@ public class Perfil implements Parcelable {
         usuario = in.readString();
         mail = in.readString();
         foto = in.readString();
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
+        biografia = in.readString();
     }
 
     public static final Creator<Perfil> CREATOR = new Creator<Perfil>() {
@@ -57,12 +37,27 @@ public class Perfil implements Parcelable {
         }
     };
 
-    public void setId(){
-        this.id = id;
+    @Override
+    public String toString() {
+        return "Perfil{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", poblacion='" + poblacion + '\'' +
+                ", fecha_nac='" + fecha_nac + '\'' +
+                ", perfil_spotify='" + perfil_spotify + '\'' +
+                ", usuario='" + usuario + '\'' +
+                ", mail='" + mail + '\'' +
+                ", foto='" + foto + '\'' +
+                ", biografia='" + biografia + '\'' +
+                '}';
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -113,17 +108,32 @@ public class Perfil implements Parcelable {
         this.mail = mail;
     }
 
-    @Override
-    public String toString() {
-        return "Perfil{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", poblacion='" + poblacion + '\'' +
-                ", fecha_nac='" + fecha_nac + '\'' +
-                ", perfil_spotify='" + perfil_spotify + '\'' +
-                ", usuario='" + usuario + '\'' +
-                ", mail='" + mail + '\'' +
-                '}';
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getBiografia() {
+        return biografia;
+    }
+
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
+    }
+
+    public Perfil(int id, String nombre, String poblacion, String fecha_nac, String perfil_spotify, String usuario, String mail, String foto, String biografia) {
+        this.id = id;
+        this.nombre = nombre;
+        this.poblacion = poblacion;
+        this.fecha_nac = fecha_nac;
+        this.perfil_spotify = perfil_spotify;
+        this.usuario = usuario;
+        this.mail = mail;
+        this.foto = foto;
+        this.biografia = biografia;
     }
 
     @Override
@@ -140,5 +150,7 @@ public class Perfil implements Parcelable {
         dest.writeString(perfil_spotify);
         dest.writeString(usuario);
         dest.writeString(mail);
+        dest.writeString(foto);
+        dest.writeString(biografia);
     }
 }

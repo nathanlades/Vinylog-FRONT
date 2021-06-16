@@ -45,14 +45,17 @@
                 android:id="@+id/bt_destacados"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:onClick="tipoBusqueda"
                 android:backgroundTint="@color/vinyl_red"
                 android:fontFamily="@font/cambria"
+                android:onClick="tipoBusqueda"
                 android:text="@string/bt_destacados"
                 android:textAllCaps="false"
-                android:layout_marginRight="10dp"
-                android:textStyle="bold" />
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:textStyle="bold"
+                tools:visibility="gone" />
 
             <Button
                 android:id="@+id/bt_usuarios"
@@ -64,6 +67,8 @@
                 android:fontFamily="@font/cambria"
                 android:text="@string/bt_usuarios"
                 android:textAllCaps="false"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
                 android:layout_marginRight="10dp"
                 android:textStyle="bold" />
 
@@ -77,6 +82,8 @@
                 android:backgroundTint="@color/vinyl_red"
                 android:fontFamily="@font/cambria"
                 android:text="@string/bt_temas"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
                 android:textAllCaps="false"
                 android:textStyle="bold" />
 
@@ -90,6 +97,8 @@
                 android:backgroundTint="@color/vinyl_red"
                 android:fontFamily="@font/cambria"
                 android:text="@string/bt_discos"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
                 android:textAllCaps="false"
                 android:textStyle="bold" />
 
@@ -102,6 +111,8 @@
                 android:backgroundTint="@color/vinyl_red"
                 android:fontFamily="@font/cambria"
                 android:text="@string/bt_artistas"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
                 android:textAllCaps="false"
                 android:textStyle="bold" />
 
