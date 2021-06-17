@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/iv_resena_titulo"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="40dp"
@@ -44,7 +44,7 @@
                 android:fontFamily="@font/cambria"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_resena_titulo" />
 
             <Button
                 android:id="@+id/bt_resena_comentario"

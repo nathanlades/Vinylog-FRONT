@@ -36,11 +36,12 @@ import java.util.Map;
 import POJO.Comentario;
 import POJO.Perfil;
 import POJO.Resena;
+import metodosExternos.Likes;
 
 public class ResenaActivity extends AppCompatActivity {
 
-    ImageView iv_resena, iv_resena_puntuacion1, iv_resena_puntuacion2, iv_resena_puntuacion3, iv_resena_puntuacion4, iv_resena_puntuacion5, iv_resena_autor;
-    TextView tv_resena, tv_resena_texto, tv_resena_autor, tv_resena_fecha, tv_resena_comentarios_numero;
+    ImageView iv_resena, iv_resena_puntuacion1, iv_resena_puntuacion2, iv_resena_puntuacion3, iv_resena_puntuacion4, iv_resena_puntuacion5, iv_resena_autor, iv_resena_like;
+    TextView tv_resena, tv_resena_texto, tv_resena_autor, tv_resena_fecha, tv_resena_comentarios_numero, tv_resena_like_numero;
     Perfil perfilAutor;
     Resena resena;
     RecyclerView rv_resenaComentariosAdapter;
@@ -71,6 +72,8 @@ public class ResenaActivity extends AppCompatActivity {
         iv_resena_autor = findViewById(R.id.iv_resena_autor);
         rv_resenaComentariosAdapter = findViewById(R.id.rv_resena_comentarios);
         fab_resena = findViewById(R.id.fab_resena);
+        iv_resena_like = findViewById(R.id.iv_resena_like);
+        tv_resena_like_numero = findViewById(R.id.tv_resena_like_numero);
 
         perfilAutor = getIntent().getParcelableExtra("perfilAutor");
         resena = getIntent().getParcelableExtra("resena");
@@ -86,6 +89,9 @@ public class ResenaActivity extends AppCompatActivity {
 
         //Cargamos la consulta con los comentarios y sus autores para esta reseña
         cargarComentarios("http://95.39.184.89/vinyl/cargarComentarios.php", String.valueOf(resena.getId()));
+
+        Likes.checkLike(this, recuperarIdPerfil(), String.valueOf(resena.getId()), iv_resena_like);
+        Likes.countLike(this,String.valueOf(resena.getId()),tv_resena_like_numero);
     }
 
     private void cargarComentarios(String URL, String busqueda) {
@@ -239,6 +245,10 @@ public class ResenaActivity extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    public void like(View view){
+            Likes.darLike(this,recuperarIdPerfil(),String.valueOf(resena.getId()),iv_resena_like,tv_resena_like_numero);
     }
 
     private String recuperarIdPerfil() {
