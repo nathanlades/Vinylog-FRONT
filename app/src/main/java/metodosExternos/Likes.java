@@ -1,6 +1,7 @@
 package metodosExternos;
 
 import android.content.Context;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,7 @@ public class Likes {
 
     static boolean check = false;
 
-    public static boolean darLike(Context context, String id_perfil, String id_resena, ImageView iv_resena_like, TextView tv_resena_like_numero){
+    public static boolean darLike(Context context, String id_perfil, String id_resena, ImageButton iv_resena_like, TextView tv_resena_like_numero){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://95.39.184.89/vinyl/darLike.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -61,7 +62,7 @@ public class Likes {
         return true;
     }
 
-    public static boolean checkLike(Context context, String id_perfil, String id_resena, ImageView iv_resena_like){
+    public static boolean checkLike(Context context, String id_perfil, String id_resena, ImageButton iv_resena_like){
         check = false;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://95.39.184.89/vinyl/comprobarLike.php", new Response.Listener<String>() {
             @Override
@@ -91,7 +92,7 @@ public class Likes {
         return check;
     }
 
-    public static void uncheckLike(Context context, String id_perfil, String id_resena, ImageView iv_resena_like, TextView tv_resena_like_numero) {
+    public static void uncheckLike(Context context, String id_perfil, String id_resena, ImageButton iv_resena_like, TextView tv_resena_like_numero) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://95.39.184.89/vinyl/quitarLike.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

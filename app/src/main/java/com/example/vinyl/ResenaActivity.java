@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +47,7 @@ public class ResenaActivity extends AppCompatActivity {
     Resena resena;
     RecyclerView rv_resenaComentariosAdapter;
     FloatingActionButton fab_resena;
+    ImageButton ibt_resena_like;
 
     //Definimos las variables para el popup
     private AlertDialog.Builder dialogBuilder;
@@ -72,7 +74,7 @@ public class ResenaActivity extends AppCompatActivity {
         iv_resena_autor = findViewById(R.id.iv_resena_autor);
         rv_resenaComentariosAdapter = findViewById(R.id.rv_resena_comentarios);
         fab_resena = findViewById(R.id.fab_resena);
-        iv_resena_like = findViewById(R.id.iv_resena_like);
+        ibt_resena_like = findViewById(R.id.ibt_resena_like);
         tv_resena_like_numero = findViewById(R.id.tv_resena_like_numero);
 
         perfilAutor = getIntent().getParcelableExtra("perfilAutor");
@@ -90,7 +92,7 @@ public class ResenaActivity extends AppCompatActivity {
         //Cargamos la consulta con los comentarios y sus autores para esta reseña
         cargarComentarios("http://95.39.184.89/vinyl/cargarComentarios.php", String.valueOf(resena.getId()));
 
-        Likes.checkLike(this, recuperarIdPerfil(), String.valueOf(resena.getId()), iv_resena_like);
+        Likes.checkLike(this, recuperarIdPerfil(), String.valueOf(resena.getId()), ibt_resena_like);
         Likes.countLike(this,String.valueOf(resena.getId()),tv_resena_like_numero);
     }
 
@@ -248,7 +250,7 @@ public class ResenaActivity extends AppCompatActivity {
     }
 
     public void like(View view){
-            Likes.darLike(this,recuperarIdPerfil(),String.valueOf(resena.getId()),iv_resena_like,tv_resena_like_numero);
+            Likes.darLike(this,recuperarIdPerfil(),String.valueOf(resena.getId()),ibt_resena_like,tv_resena_like_numero);
     }
 
     private String recuperarIdPerfil() {
