@@ -4,10 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Resena implements Parcelable {
-     int id, puntuacion;
-     String titulo,texto,imagen,fecha,usuario;
+    int id, puntuacion;
+    String titulo, texto, imagen, fecha;
+    // Usuario al que pertenece la reseña y su foto de perfil
+    String usuario, foto;
 
-    public Resena(int id, int puntuacion, String titulo, String texto, String imagen, String fecha, String usuario) {
+    public Resena(int id, int puntuacion, String titulo, String texto, String imagen, String fecha,
+                  String usuario, String foto) {
         this.id = id;
         this.puntuacion = puntuacion;
         this.titulo = titulo;
@@ -15,6 +18,7 @@ public class Resena implements Parcelable {
         this.imagen = imagen;
         this.fecha = fecha;
         this.usuario = usuario;
+        this.foto = foto;
     }
 
     protected Resena(Parcel in) {
@@ -25,6 +29,7 @@ public class Resena implements Parcelable {
         imagen = in.readString();
         fecha = in.readString();
         usuario = in.readString();
+        foto = in.readString();
     }
 
     public static final Creator<Resena> CREATOR = new Creator<Resena>() {
@@ -43,12 +48,13 @@ public class Resena implements Parcelable {
     public String toString() {
         return "Resena{" +
                 "id=" + id +
-                ", likes=" + puntuacion +
+                ", puntuacion=" + puntuacion +
                 ", titulo='" + titulo + '\'' +
                 ", texto='" + texto + '\'' +
                 ", imagen='" + imagen + '\'' +
                 ", fecha='" + fecha + '\'' +
                 ", usuario='" + usuario + '\'' +
+                ", foto='" + foto + '\'' +
                 '}';
     }
 
@@ -108,6 +114,14 @@ public class Resena implements Parcelable {
         this.fecha = fecha;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -122,5 +136,6 @@ public class Resena implements Parcelable {
         dest.writeString(imagen);
         dest.writeString(fecha);
         dest.writeString(usuario);
+        dest.writeString(foto);
     }
 }

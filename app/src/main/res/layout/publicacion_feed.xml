@@ -44,14 +44,14 @@
         android:layout_height="360dp"
         android:contentDescription="@string/cover_description"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@id/menuInferiorProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivProfilePic"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/menuInferiorProfile"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
@@ -99,7 +99,7 @@
         android:paddingEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/menuInferiorProfile">
 
         <TextView
             android:id="@+id/tvTitle"
