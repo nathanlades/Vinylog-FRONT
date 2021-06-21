@@ -7,28 +7,228 @@
     tools:context=".ProfileActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/menuSuperiorProfile"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/vinyl_red"
-        android:backgroundTint="@color/vinyl_red"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageButton
+            android:id="@+id/ibEditProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/vinyl_red"
+            android:backgroundTintMode="screen"
+            android:contentDescription="@string/btn_edit_profile_description"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@mipmap/edit_profile_blank" />
+
         <ImageView
-            android:id="@+id/iv_logo_white_top"
-            android:layout_width="wrap_content"
-            android:layout_height="22dp"
+            android:id="@+id/ivVinylog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@color/vinyl_red"
+            android:contentDescription="@string/logo_blank_description"
+            android:padding="15dp"
             app:srcCompat="@mipmap/logo_blank" />
+
+        <ImageButton
+            android:id="@+id/ibLogOut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/vinyl_red"
+            android:backgroundTintMode="screen"
+            android:contentDescription="@string/btn_log_out_description"
+            android:onClick="cerrarSesion"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@mipmap/log_out_blank" />
+
     </LinearLayout>
 
-    <!-- CÓDIGO AQUÍ ####################################################### -->
+    <!-- *************************************************************************************** -->
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/infoProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="180dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menuSuperiorProfile">
+
+        <ImageView
+            android:id="@+id/ivProfilePicProfile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/profile_pic_description"
+            android:paddingHorizontal="15dp"
+            android:paddingTop="15dp"
+            android:scaleType="fitStart"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:id="@+id/bloqueInfoPerfil"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:paddingTop="15dp">
+
+            <LinearLayout
+                android:id="@+id/infoProfileRow1"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvNumReviews"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center"
+                    android:textStyle="bold"
+                    android:text="@string/tv_num_reviews" />
+
+                <TextView
+                    android:id="@+id/tvNumFollowers"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center"
+                    android:textStyle="bold"
+                    android:text="@string/tv_num_followers" />
+
+                <TextView
+                    android:id="@+id/tvNumFollowed"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center"
+                    android:textStyle="bold"
+                    android:text="@string/tv_num_followed" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/infoProfileRow2"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvReviews"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="top|center"
+                    android:text="@string/tv_reviews" />
+
+                <TextView
+                    android:id="@+id/tvFollowers"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="top|center"
+                    android:text="@string/tv_followers" />
+
+                <TextView
+                    android:id="@+id/tvFollowed"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="top|center"
+                    android:text="@string/tv_followed" />
+            </LinearLayout>
+
+            <!--TextView
+                android:id="@+id/tvUserProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:textStyle="bold"
+                android:text="@string/tv_user" /-->
+
+            <TextView
+                android:id="@+id/tvNameProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="5dp"
+                android:paddingHorizontal="25dp"
+                android:textStyle="bold"
+                android:text="@string/tv_name" />
+
+            <TextView
+                android:id="@+id/tvBioProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp"
+                android:paddingHorizontal="25dp"
+                android:text="@string/tv_bio" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sections"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@color/vinyl_red"
+        app:layout_constraintTop_toBottomOf="@id/infoProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnSongProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:backgroundTint="@color/vinyl_selected_red"
+            android:layout_marginHorizontal="5dp"
+            android:onClick="filterSelected"
+            android:text="@string/btn_song" />
+
+        <Button
+            android:id="@+id/btnAlbumProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:backgroundTint="@color/vinyl_red"
+            android:layout_marginHorizontal="5dp"
+            android:onClick="filterSelected"
+            android:text="@string/btn_album" />
+
+        <Button
+            android:id="@+id/btnArtistProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:backgroundTint="@color/vinyl_red"
+            android:layout_marginHorizontal="5dp"
+            android:onClick="filterSelected"
+            android:text="@string/btn_artist" />
+    </LinearLayout>
+
+
+
+    <!-- *************************************************************************************** -->
+
+    <LinearLayout
+        android:id="@+id/menuInferiorProfile"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/vinyl_red"
@@ -39,43 +239,43 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/iv_feed_perfil"
+            android:id="@+id/ivFeedProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/feed_blank_description"
-            android:padding="6dp"
             android:onClick="fromProfiletoFeed"
+            android:padding="10dp"
             app:srcCompat="@mipmap/feed_blank" />
 
         <ImageView
-            android:id="@+id/iv_buscador_perfil"
+            android:id="@+id/ivSearchProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_blank_description"
-            android:padding="6dp"
             android:onClick="fromProfiletoSearch"
+            android:padding="10dp"
             app:srcCompat="@mipmap/search_blank" />
 
         <ImageView
-            android:id="@+id/iv_calendario_perfil"
+            android:id="@+id/ivCalendarProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/calendar_blank_description"
-            android:padding="6dp"
             android:onClick="fromProfiletoCalendar"
+            android:padding="10dp"
             app:srcCompat="@mipmap/calendar_blank" />
 
         <ImageView
-            android:id="@+id/iv_perfil_perfil"
+            android:id="@+id/ivProfileProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/vinyl_selected_red"
             android:contentDescription="@string/profile_blank_description"
-            android:padding="6dp"
+            android:padding="10dp"
             app:srcCompat="@mipmap/profile_blank" />
 
     </LinearLayout>

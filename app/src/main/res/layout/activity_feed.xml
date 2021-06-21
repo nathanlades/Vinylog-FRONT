@@ -6,39 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".FeedActivity">
 
-    <!--ImageButton
-        android:id="@+id/ibNewReview"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@color/vinyl_red"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/new_review_blank" />
-
-    <ImageView
-        android:id="@+id/iv_logo_white_top"
-        android:layout_width="@dimen/box_inset_layout_padding"
-        android:layout_height="50dp"
-        android:background="@color/vinyl_red"
-        android:padding="15dp"
-        android:contentDescription="@string/logo_blank_description"
-        app:layout_constraintStart_toEndOf="@+id/ibNewReview"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/ibLogOut"
-        app:srcCompat="@mipmap/logo_blank" />
-
-    <ImageButton
-        android:id="@+id/ibLogOut"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@color/vinyl_red"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_logo_white_top"
-        app:srcCompat="@mipmap/log_out_blank" /-->
-
     <LinearLayout
-        android:id="@+id/menuSuperior"
+        android:id="@+id/menuSuperiorFeed"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
@@ -54,12 +23,12 @@
             android:background="@color/vinyl_red"
             android:backgroundTintMode="screen"
             android:contentDescription="@string/btn_new_review_description"
-            android:padding="6dp"
+            android:padding="10dp"
             android:scaleType="centerInside"
             app:srcCompat="@mipmap/new_review_blank" />
 
         <ImageView
-            android:id="@+id/iv_logo_white_top"
+            android:id="@+id/ivVinylog"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -76,7 +45,7 @@
             android:background="@color/vinyl_red"
             android:backgroundTintMode="screen"
             android:contentDescription="@string/btn_log_out_description"
-            android:padding="6dp"
+            android:padding="10dp"
             android:scaleType="centerInside"
             app:srcCompat="@mipmap/log_out_blank"
             android:onClick="cerrarSesion"/>
@@ -88,13 +57,13 @@
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/menuInferior"
+        app:layout_constraintBottom_toTopOf="@+id/menuInferiorFeed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuSuperior" />
+        app:layout_constraintTop_toBottomOf="@+id/menuSuperiorFeed" />
 
     <LinearLayout
-        android:id="@+id/menuInferior"
+        android:id="@+id/menuInferiorFeed"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/vinyl_red"
@@ -105,43 +74,43 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/feedPage"
+            android:id="@+id/ivFeedFeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/vinyl_selected_red"
             android:contentDescription="@string/feed_blank_description"
-            android:padding="6dp"
+            android:padding="10dp"
             app:srcCompat="@mipmap/feed_blank" />
 
         <ImageView
-            android:id="@+id/searchPage"
+            android:id="@+id/ivSearchFeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/search_blank_description"
             android:onClick="fromFeedtoSearch"
-            android:padding="6dp"
+            android:padding="10dp"
             app:srcCompat="@mipmap/search_blank" />
 
         <ImageView
-            android:id="@+id/calendarPage"
+            android:id="@+id/ivCalendarFeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/calendar_blank_description"
             android:onClick="fromFeedtoCalendar"
-            android:padding="6dp"
+            android:padding="10dp"
             app:srcCompat="@mipmap/calendar_blank" />
 
         <ImageView
-            android:id="@+id/profilePage"
+            android:id="@+id/ivProfileFeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/profile_blank_description"
             android:onClick="fromFeedtoProfile"
-            android:padding="6dp"
+            android:padding="10dp"
             app:srcCompat="@mipmap/profile_blank" />
 
     </LinearLayout>

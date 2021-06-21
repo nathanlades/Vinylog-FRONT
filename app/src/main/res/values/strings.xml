@@ -102,6 +102,7 @@
     <string name="btn_share_description">Enviar</string>
     <string name="btn_new_review_description">Nueva reseña</string>
     <string name="btn_log_out_description">Cerrar sesión</string>
+    <string name="btn_edit_profile_description">Editar perfil</string>
 
     <!-- String de publicacion_feed.xml -->
     <string name="title">Título</string>
@@ -150,5 +151,19 @@
 
     <!-- Strings para la vista del calendario -->
     <string name="tv_calendario_titulo">Próximos eventos de los artistas a los que sigues</string>
+
+    <!-- Strings para la vista del perfil -->
+    <string name="tv_num_reviews">5</string>
+    <string name="tv_num_followers">240</string>
+    <string name="tv_num_followed">16</string>
+    <string name="tv_reviews">Reseñas</string>
+    <string name="tv_followers">Seguidores</string>
+    <string name="tv_followed">Seguidos</string>
+    <string name="tv_user">\@usuario</string>
+    <string name="tv_name">Nombre</string>
+    <string name="tv_bio">Esta es mi biografía. Es algo escueta porque en este espacio cabe lo justo. Máximo 150 caracteres, ya lo digo.</string>
+    <string name="btn_song">Canciones</string>
+    <string name="btn_album">Álbumes</string>
+    <string name="btn_artist">Artistas</string>
 
 </resources>

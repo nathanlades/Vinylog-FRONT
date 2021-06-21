@@ -50,7 +50,7 @@ public class Buscador extends AppCompatActivity {
         setContentView(R.layout.activity_buscador);
         recyclerView = findViewById(R.id.rv);
         et_buscador = findViewById(R.id.et_buscador);
-        iv_buscador = findViewById(R.id.iv_perfil_perfil);
+        iv_buscador = findViewById(R.id.ivProfileProfile);
         bt_destacados = findViewById(R.id.bt_destacados);
         //Aquí hacemos que el botón de destacados no se muestre
         bt_destacados.setVisibility(View.GONE);

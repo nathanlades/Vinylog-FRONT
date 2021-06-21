@@ -51,7 +51,6 @@ public class FeedActivity extends AppCompatActivity {
 
         URL = getResources().getString(R.string.url) + "cargarFeed.php";
 
-        //perfil = getIntent().getParcelableExtra("perfilIntent");
         perfil = recuperarPreferencias();
 
         userLoggedIn = perfil.getUsuario();
@@ -97,7 +96,7 @@ public class FeedActivity extends AppCompatActivity {
                 title = new String[i], text = new String[i];
 
         for (Resena resena : resenaArray) {
-            profilePic[resenaArray.indexOf(resena)] = resena.getImagen();
+            profilePic[resenaArray.indexOf(resena)] = resena.getFoto();
             user[resenaArray.indexOf(resena)] = resena.getUsuario();
             cover[resenaArray.indexOf(resena)] = resena.getImagen();
             title[resenaArray.indexOf(resena)] = resena.getTitulo();
