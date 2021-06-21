@@ -52,7 +52,7 @@ public class DiscoActivity extends AppCompatActivity {
     EditText et_artista_resena, et_artista_resena_titulo;
     TextView tv_artista_resena_puntuacion;
     Button bt_artista_resena;
-    ImageView iv_artista_resena_puntuacion1, iv_artista_resena_puntuacion2, iv_artista_resena_puntuacion3, iv_artista_resena_puntuacion4, iv_artista_resena_puntuacion5;
+    ImageView iv_artista_resena_puntuacion1, iv_artista_resena_puntuacion2, iv_artista_resena_puntuacion3, iv_artista_resena_puntuacion4, iv_artista_resena_puntuacion5, iv_resena_titulo;
 
 
     @Override
@@ -198,12 +198,22 @@ public class DiscoActivity extends AppCompatActivity {
         iv_artista_resena_puntuacion4 = resenaPopupView.findViewById(R.id.iv_artista_resena_puntuacion4);
         iv_artista_resena_puntuacion5 = resenaPopupView.findViewById(R.id.iv_artista_resena_puntuacion5);
         tv_artista_resena_puntuacion = resenaPopupView.findViewById(R.id.tv_artista_resena_puntuacion);
+        iv_resena_titulo = resenaPopupView.findViewById(R.id.iv_resena_titulo);
 
         dialogBuilder.setView(resenaPopupView);
         alertDialog = dialogBuilder.create();
         alertDialog.show();
 
-        bt_artista_resena.setOnClickListener(new View.OnClickListener() {
+/*        iv_resena_titulo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, 1);
+            }
+        });*/
+
+/*        bt_artista_resena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String titulo = et_artista_resena_titulo.getText().toString();
@@ -218,6 +228,16 @@ public class DiscoActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(DiscoActivity.this, "Tanto el título como el texto deben estar rellenos.", Toast.LENGTH_SHORT).show();
                 }
+            }
+
+        });*/
+
+        bt_artista_resena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, 1);
             }
 
         });
