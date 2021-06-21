@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EventoActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:backgroundTint="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_logo_white_top"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            app:srcCompat="@mipmap/logo_blank" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_evento_dia"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cambria"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_evento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_evento"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <TextView
+        android:id="@+id/tv_evento_mes"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:fontFamily="@font/cambria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_evento_dia" />
+
+    <TextView
+        android:id="@+id/tv_evento_nombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cambria"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_evento"
+        app:layout_constraintStart_toEndOf="@id/tv_evento_dia"
+        app:layout_constraintTop_toTopOf="@id/tv_evento_dia" />
+
+    <TextView
+        android:id="@+id/tv_evento_hora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cambria"
+        app:layout_constraintStart_toStartOf="@id/tv_evento_nombre"
+        app:layout_constraintTop_toBottomOf="@id/tv_evento_nombre" />
+
+    <TextView
+        android:id="@+id/tv_evento_direccion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cambria"
+        app:layout_constraintStart_toStartOf="@id/tv_evento_nombre"
+        app:layout_constraintTop_toBottomOf="@id/tv_evento_hora"
+        app:layout_constraintEnd_toStartOf="@id/iv_evento"/>
+
+    <ImageView
+        android:id="@+id/iv_evento"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:srcCompat="@drawable/google_logo" />
+
+    <View
+        android:id="@+id/v_evento_separador1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="#3E3E3E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_evento" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_menu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_evento_separador1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ibt_evento_ir"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:onClick="ir"
+                app:srcCompat="@mipmap/ir" />
+
+            <ImageButton
+                android:id="@+id/ibt_evento_entrada"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:onClick="iraEntradas"
+                app:srcCompat="@mipmap/tickets" />
+
+            <ImageButton
+                android:id="@+id/ibt_evento_iramaps"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:onClick="iraMaps"
+                app:srcCompat="@mipmap/location" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_evento_ir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Voy a ir"
+                android:fontFamily="@font/cambria"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tv_evento_entrada"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/cambria"
+                android:text="Comprar entrada"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tv_evento_iramaps"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/cambria"
+                android:text="Cómo llegar"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_evento_separador2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:background="#3E3E3E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_menu" />
+
+    <TextView
+        android:id="@+id/tv_evento_asistentes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/cambria"
+        android:text="Personas que van a ir: "
+        app:layout_constraintBottom_toBottomOf="@id/iv_evento_asistentes3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_evento_asistentes3" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_evento_asistentes1"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="4dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/tv_evento_asistentes"
+        app:layout_constraintTop_toTopOf="@id/iv_evento_asistentes3"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_evento_asistentes2"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="34dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/tv_evento_asistentes"
+        app:layout_constraintTop_toTopOf="@id/iv_evento_asistentes3"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_evento_asistentes3"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="64dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/v_evento_separador3"
+        app:layout_constraintStart_toEndOf="@+id/tv_evento_asistentes"
+        app:layout_constraintTop_toBottomOf="@id/v_evento_separador2"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_evento_asistentes_lista"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="10dp"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/v_evento_separador3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_evento_asistentes3"
+        app:layout_constraintTop_toBottomOf="@id/v_evento_separador2" />
+
+  <!--  <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_evento_asistentes"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_evento_asistentes"
+        app:layout_constraintTop_toBottomOf="@id/v_evento_separador2" />-->
+
+    <View
+        android:id="@+id/v_evento_separador3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="56dp"
+        android:background="#3E3E3E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_evento_separador2" />
+
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_evento_separador3" />
+
+
+    <!-- <fragment
+        android:id="@+id/fragment_map"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_evento_separador3"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout2" />-->
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vinyl_red"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_feed_evento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/feed_blank_description"
+            android:padding="6dp"
+            android:onClick="fromEventotoFeed"
+            app:srcCompat="@mipmap/feed_blank" />
+
+        <ImageView
+            android:id="@+id/iv_buscador_evento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_blank_description"
+            android:onClick="fromEventotoSearch"
+            android:padding="6dp"
+            app:srcCompat="@mipmap/search_blank" />
+
+        <ImageView
+            android:id="@+id/iv_calendario_eventoM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/vinyl_selected_red"
+            android:contentDescription="@string/calendar_blank_description"
+            android:onClick="fromEventotoCalendar"
+            android:padding="6dp"
+            app:srcCompat="@mipmap/calendar_blank" />
+
+        <ImageView
+            android:id="@+id/iv_perfil_evento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/profile_blank_description"
+            android:onClick="fromEventotoProfile"
+            android:padding="6dp"
+            app:srcCompat="@mipmap/profile_blank" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

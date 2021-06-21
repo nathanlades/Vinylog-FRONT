@@ -148,5 +148,7 @@
 
     <!-- Strings para la vista del calendario -->
     <string name="tv_calendario_titulo">Próximos eventos de los artistas a los que sigues</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

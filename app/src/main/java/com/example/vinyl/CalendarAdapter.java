@@ -67,7 +67,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MyView
         Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode(evento.getLugar()));
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
-        holder.ibt_calendario_evento_iramaps.setOnClickListener(new View.OnClickListener() {
+        /*holder.ibt_calendario_evento_iramaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     context.startActivity(mapIntent);
@@ -77,8 +77,8 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MyView
         holder.iv_calendario_evento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri webPage = Uri.parse(evento.getEntradas());
-                Intent intent = new Intent(Intent.ACTION_VIEW, webPage);
+                Intent intent = new Intent(context, EventoActivity.class);
+                intent.putExtra("evento", evento);
                 context.startActivity(intent);
             }
         });
@@ -90,7 +90,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MyView
                 Intent intent = new Intent(Intent.ACTION_VIEW, webPage);
                 context.startActivity(intent);
             }
-        });
+        });*/
 
     }
 
@@ -104,6 +104,10 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MyView
         if(listener!=null){
             listener.onClick(v);
         }
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

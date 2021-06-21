@@ -41,19 +41,20 @@ import metodosExternos.Likes;
 
 public class ResenaActivity extends AppCompatActivity {
 
-    ImageView iv_resena, iv_resena_puntuacion1, iv_resena_puntuacion2, iv_resena_puntuacion3, iv_resena_puntuacion4, iv_resena_puntuacion5, iv_resena_autor, iv_resena_like;
-    TextView tv_resena, tv_resena_texto, tv_resena_autor, tv_resena_fecha, tv_resena_comentarios_numero, tv_resena_like_numero;
+    ImageView iv_resena, iv_resena_puntuacion1, iv_resena_puntuacion2, iv_resena_puntuacion3, iv_resena_puntuacion4, iv_resena_puntuacion5, iv_resena_autor, iv_resena_like,
+            iv_artista_resena_puntuacion1, iv_artista_resena_puntuacion2, iv_artista_resena_puntuacion3, iv_artista_resena_puntuacion4, iv_artista_resena_puntuacion5;
+    TextView tv_resena, tv_resena_texto, tv_resena_autor, tv_resena_fecha, tv_resena_comentarios_numero, tv_resena_like_numero, tv_artista_resena_puntuacion;
     Perfil perfilAutor;
     Resena resena;
     RecyclerView rv_resenaComentariosAdapter;
-    FloatingActionButton fab_resena;
+    FloatingActionButton fab_resena, fab_resena_editar;
     ImageButton ibt_resena_like;
 
     //Definimos las variables para el popup
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog alertDialog;
-    EditText et_resena_comentario;
-    Button bt_resena_comentario;
+    EditText et_resena_comentario, et_artista_resena_titulo, et_artista_resena;
+    Button bt_resena_comentario, bt_artista_resena;
     
 
     @Override
@@ -74,6 +75,7 @@ public class ResenaActivity extends AppCompatActivity {
         iv_resena_autor = findViewById(R.id.iv_resena_autor);
         rv_resenaComentariosAdapter = findViewById(R.id.rv_resena_comentarios);
         fab_resena = findViewById(R.id.fab_resena);
+        fab_resena_editar = findViewById(R.id.fab_resena_editar);
         ibt_resena_like = findViewById(R.id.ibt_resena_like);
         tv_resena_like_numero = findViewById(R.id.tv_resena_like_numero);
 
@@ -92,8 +94,14 @@ public class ResenaActivity extends AppCompatActivity {
         //Cargamos la consulta con los comentarios y sus autores para esta reseña
         cargarComentarios("http://95.39.184.89/vinyl/cargarComentarios.php", String.valueOf(resena.getId()));
 
+        //Comprobamos si se le ha dado likes, y el número total de ellos
         Likes.checkLike(this, recuperarIdPerfil(), String.valueOf(resena.getId()), ibt_resena_like);
         Likes.countLike(this,String.valueOf(resena.getId()),tv_resena_like_numero);
+
+        //Hacemos que el botón de editar reseña solo aparezca si la reseña es de tu propio perfil
+        if (perfilAutor.getId() == Integer.parseInt(recuperarIdPerfil())){
+            fab_resena_editar.setVisibility(View.VISIBLE);
+        }
     }
 
     private void cargarComentarios(String URL, String busqueda) {
@@ -156,13 +164,18 @@ public class ResenaActivity extends AppCompatActivity {
 
     private void mostrarComentarios(List<Comentario> comentarioArray, List<Perfil> perfilArray) {
         ComentarioAdapter comentarioAdapter = new ComentarioAdapter(this,comentarioArray, perfilArray);
-        //rv_resenaComentariosAdapter.setNestedScrollingEnabled(false);
         rv_resenaComentariosAdapter.setAdapter(comentarioAdapter);
         rv_resenaComentariosAdapter.setLayoutManager(new LinearLayoutManager(this));
         rv_resenaComentariosAdapter.setVisibility(View.VISIBLE);
     }
 
     private void setPuntuacion(Resena resena) {
+        iv_resena_puntuacion1.setImageResource(R.mipmap.feed_grey);
+        iv_resena_puntuacion2.setImageResource(R.mipmap.feed_grey);
+        iv_resena_puntuacion3.setImageResource(R.mipmap.feed_grey);
+        iv_resena_puntuacion4.setImageResource(R.mipmap.feed_grey);
+        iv_resena_puntuacion5.setImageResource(R.mipmap.feed_grey);
+
         switch (resena.getPuntuacion()){
             case 0:
                 break;
@@ -218,6 +231,176 @@ public class ResenaActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void editarResena(View view) {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View resenaPopupView = getLayoutInflater().inflate(R.layout.resena_popup, null);
+        et_artista_resena_titulo = resenaPopupView.findViewById(R.id.et_artista_resena_titulo);
+        et_artista_resena = resenaPopupView.findViewById(R.id.et_artista_resena);
+        bt_artista_resena = resenaPopupView.findViewById(R.id.bt_artista_resena);
+        iv_artista_resena_puntuacion1 = resenaPopupView.findViewById(R.id.iv_artista_resena_puntuacion1);
+        iv_artista_resena_puntuacion2 = resenaPopupView.findViewById(R.id.iv_artista_resena_puntuacion2);
+        iv_artista_resena_puntuacion3 = resenaPopupView.findViewById(R.id.iv_artista_resena_puntuacion3);
+        iv_artista_resena_puntuacion4 = resenaPopupView.findViewById(R.id.iv_artista_resena_puntuacion4);
+        iv_artista_resena_puntuacion5 = resenaPopupView.findViewById(R.id.iv_artista_resena_puntuacion5);
+        tv_artista_resena_puntuacion = resenaPopupView.findViewById(R.id.tv_artista_resena_puntuacion);
+
+        et_artista_resena_titulo.setText(resena.getTitulo());
+        et_artista_resena.setText(resena.getTexto());
+        switch (resena.getPuntuacion()){
+            case 0:
+                break;
+            case 1:
+                iv_artista_resena_puntuacion1.setImageResource(R.mipmap.feed_red);
+                break;
+            case 2:
+                iv_artista_resena_puntuacion1.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion2.setImageResource(R.mipmap.feed_red);
+                break;
+            case 3:
+                iv_artista_resena_puntuacion1.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion2.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion3.setImageResource(R.mipmap.feed_red);
+                break;
+            case 4:
+                iv_artista_resena_puntuacion1.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion2.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion3.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion4.setImageResource(R.mipmap.feed_red);
+                break;
+            case 5:
+                iv_artista_resena_puntuacion1.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion2.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion3.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion4.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion5.setImageResource(R.mipmap.feed_red);
+                break;
+        }
+
+        dialogBuilder.setView(resenaPopupView);
+        alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        bt_artista_resena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id_resena = String.valueOf(resena.getId());
+                String puntuacion = String.valueOf(resena.getPuntuacion());
+                String texto = et_artista_resena.getText().toString();
+                String titulo = et_artista_resena_titulo.getText().toString();
+                
+                if (!tv_artista_resena_puntuacion.getText().toString().equals("")){
+                    puntuacion = tv_artista_resena_puntuacion.getText().toString();
+                }
+
+                if (!texto.equals("") && !titulo.equals("")){
+                    actualizarResena(id_resena, puntuacion, texto, titulo);
+                } else {
+                    Toast.makeText(ResenaActivity.this, "El comentario no puede estar vacío", Toast.LENGTH_SHORT).show();
+                }
+
+                alertDialog.dismiss();
+            }
+        });
+
+
+        iv_artista_resena_puntuacion1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iv_artista_resena_puntuacion1.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion2.setImageResource(R.mipmap.feed_grey);
+                iv_artista_resena_puntuacion3.setImageResource(R.mipmap.feed_grey);
+                iv_artista_resena_puntuacion4.setImageResource(R.mipmap.feed_grey);
+                iv_artista_resena_puntuacion5.setImageResource(R.mipmap.feed_grey);
+                tv_artista_resena_puntuacion.setText("1");
+            }
+        });
+        iv_artista_resena_puntuacion2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iv_artista_resena_puntuacion1.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion2.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion3.setImageResource(R.mipmap.feed_grey);
+                iv_artista_resena_puntuacion4.setImageResource(R.mipmap.feed_grey);
+                iv_artista_resena_puntuacion5.setImageResource(R.mipmap.feed_grey);
+                tv_artista_resena_puntuacion.setText("2");
+            }
+        });
+        iv_artista_resena_puntuacion3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iv_artista_resena_puntuacion1.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion2.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion3.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion4.setImageResource(R.mipmap.feed_grey);
+                iv_artista_resena_puntuacion5.setImageResource(R.mipmap.feed_grey);
+                tv_artista_resena_puntuacion.setText("3");
+            }
+        });
+        iv_artista_resena_puntuacion4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iv_artista_resena_puntuacion1.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion2.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion3.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion4.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion5.setImageResource(R.mipmap.feed_grey);
+                tv_artista_resena_puntuacion.setText("4");
+            }
+        });
+        iv_artista_resena_puntuacion5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iv_artista_resena_puntuacion1.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion2.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion3.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion4.setImageResource(R.mipmap.feed_red);
+                iv_artista_resena_puntuacion5.setImageResource(R.mipmap.feed_red);
+                tv_artista_resena_puntuacion.setText("5");
+            }
+        });
+
+    }
+
+    private void actualizarResena(String id_resena, String puntuacion, String texto, String titulo) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://95.39.184.89/vinyl/actualizarResena.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.contains("true")){
+/*                    resena.setPuntuacion(Integer.parseInt(puntuacion));
+                    resena.setTitulo(titulo);
+                    resena.setTexto(texto);
+                    ResenaActivity.this.recreate();*/
+                    resena.setPuntuacion(Integer.parseInt(puntuacion));
+                    resena.setTitulo(titulo);
+                    resena.setTexto(texto);
+                    setPuntuacion(resena);
+                    tv_resena.setText(resena.getTitulo());
+                    tv_resena_texto.setText(resena.getTexto());
+                } else {
+                    Toast.makeText(ResenaActivity.this, "Error en el volley", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ResenaActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String,String>();
+                params.put("id",id_resena);
+                params.put("puntuacion", puntuacion);
+                params.put("texto", texto);
+                params.put("titulo", titulo);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
     }
 
     private void guardarComentario(String id_resena, String id_perfil, String comentario) {
