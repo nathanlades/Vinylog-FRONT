@@ -20,7 +20,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/iv_resena_titulo"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="40dp"
@@ -39,7 +39,7 @@
                 android:fontFamily="@font/cambria"
                 app:layout_constraintEnd_toStartOf="@+id/iv_artista_resena_puntuacion1"
                 app:layout_constraintStart_toStartOf="@id/et_artista_resena"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_resena_titulo" />
 
             <ImageView
                 android:id="@+id/iv_artista_resena_puntuacion1"
