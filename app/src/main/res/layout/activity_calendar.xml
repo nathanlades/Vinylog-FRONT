@@ -64,7 +64,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/iv_feed_calendario"
+            android:id="@+id/iv_feed_evento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -74,7 +74,7 @@
             app:srcCompat="@mipmap/feed_blank" />
 
         <ImageView
-            android:id="@+id/iv_buscador_calendario"
+            android:id="@+id/iv_buscador_evento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -84,7 +84,7 @@
             app:srcCompat="@mipmap/search_blank" />
 
         <ImageView
-            android:id="@+id/iv_calendario_calendario"
+            android:id="@+id/iv_calendario_eventoM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -94,7 +94,7 @@
             app:srcCompat="@mipmap/calendar_blank" />
 
         <ImageView
-            android:id="@+id/iv_perfil_calendario"
+            android:id="@+id/iv_perfil_evento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

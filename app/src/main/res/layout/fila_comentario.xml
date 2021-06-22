@@ -5,7 +5,7 @@
     android:paddingBottom="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_resena_comentario_autor"
         android:layout_width="60dp"
         android:layout_height="60dp"

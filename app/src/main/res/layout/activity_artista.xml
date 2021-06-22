@@ -96,7 +96,8 @@
         android:src="@mipmap/feed_red"
         android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:fabCustomSize="46dp"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
