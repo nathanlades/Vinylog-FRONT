@@ -103,6 +103,8 @@
     <string name="btn_new_review_description">Nueva reseña</string>
     <string name="btn_log_out_description">Cerrar sesión</string>
     <string name="btn_edit_profile_description">Editar perfil</string>
+    <string name="btn_check_description">Okay</string>
+    <string name="btn_crossed_description">Cancel</string>
 
     <!-- String de publicacion_feed.xml -->
     <string name="title">Título</string>
@@ -165,5 +167,10 @@
     <string name="btn_song">Canciones</string>
     <string name="btn_album">Álbumes</string>
     <string name="btn_artist">Artistas</string>
+    <string name="tv_no_resenas">No hay publicaciones</string>
+    <string name="tv_edit_profile_pic">Cambiar foto de perfil</string>
+    <string name="et_edit_profile_name">Nombre de perfil</string>
+    <string name="et_edit_user_name">Nombre de usuario</string>
+    <string name="et_edit_bio">Biografía</string>
 
 </resources>

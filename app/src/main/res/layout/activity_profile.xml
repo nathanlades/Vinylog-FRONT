@@ -25,6 +25,7 @@
             android:contentDescription="@string/btn_edit_profile_description"
             android:padding="10dp"
             android:scaleType="centerInside"
+            android:onClick="editarPerfil"
             app:srcCompat="@mipmap/edit_profile_blank" />
 
         <ImageView
@@ -195,7 +196,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:backgroundTint="@color/vinyl_selected_red"
+            android:backgroundTint="@color/vinyl_red"
             android:layout_marginHorizontal="5dp"
             android:onClick="filterSelected"
             android:text="@string/btn_song" />
@@ -206,7 +207,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:backgroundTint="@color/vinyl_red"
+            android:backgroundTint="@color/vinyl_selected_red"
             android:layout_marginHorizontal="5dp"
             android:onClick="filterSelected"
             android:text="@string/btn_album" />
@@ -223,7 +224,26 @@
             android:text="@string/btn_artist" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvNoResenas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_no_resenas"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/sections"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/menuInferiorProfile"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sections" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <!-- *************************************************************************************** -->
 

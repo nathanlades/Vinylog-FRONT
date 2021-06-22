@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vinyl"
         android:usesCleartextTraffic="true">
+        <activity android:name=".EditarPerfil"></activity>
         <activity android:name=".ResenaActivity" />
         <activity
             android:name=".ArtistaActivity"
