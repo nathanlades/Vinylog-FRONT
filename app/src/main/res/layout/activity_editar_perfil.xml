@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditarPerfil">
+
+    <LinearLayout
+        android:id="@+id/menuSuperiorEditarPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageButton
+            android:id="@+id/ibCancelEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/vinyl_red"
+            android:backgroundTintMode="screen"
+            android:contentDescription="@string/btn_crossed_description"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:onClick="cancelarCambios"
+            app:srcCompat="@mipmap/crossed_blank" />
+
+        <ImageView
+            android:id="@+id/ivVinylog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@color/vinyl_red"
+            android:contentDescription="@string/logo_blank_description"
+            android:padding="15dp"
+            app:srcCompat="@mipmap/logo_blank" />
+
+        <ImageButton
+            android:id="@+id/ibOkEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/vinyl_red"
+            android:backgroundTintMode="screen"
+            android:contentDescription="@string/btn_check_description"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:onClick="aceptarCambios"
+            app:srcCompat="@mipmap/check_blank" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivEditProfilePic"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@+id/menuSuperiorEditarPerfil"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/profile_pic_description" />
+
+    <TextView
+        android:id="@+id/tvEditProfilePic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/tv_edit_profile_pic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/vinyl_red"
+        app:layout_constraintTop_toBottomOf="@+id/ivEditProfilePic" />
+
+    <TextView
+        android:id="@+id/tvEditProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/et_edit_profile_name"
+        android:text="@string/et_edit_profile_name"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditProfilePic" />
+
+    <EditText
+        android:id="@+id/etEditProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/et_edit_profile_name"
+        app:layout_constraintStart_toStartOf="@+id/tvEditProfileName"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditProfileName"
+        android:autofillHints="@string/et_edit_profile_name" />
+
+    <TextView
+        android:id="@+id/tvEditUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/et_edit_user_name"
+        android:text="@string/et_edit_user_name"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditProfileName" />
+
+    <EditText
+        android:id="@+id/etEditUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/et_edit_user_name"
+        app:layout_constraintStart_toStartOf="@+id/tvEditUserName"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditUserName"
+        android:autofillHints="@string/et_edit_profile_name" />
+
+    <TextView
+        android:id="@+id/tvEditBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/et_edit_bio"
+        android:text="@string/et_edit_bio"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditUserName" />
+
+    <EditText
+        android:id="@+id/etEditBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:hint="@string/et_edit_bio"
+        app:layout_constraintStart_toStartOf="@+id/tvEditBio"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditBio"
+        android:autofillHints="@string/et_edit_bio" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
