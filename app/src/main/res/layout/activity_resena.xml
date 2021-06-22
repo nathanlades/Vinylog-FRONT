@@ -26,15 +26,32 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_resena_editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:onClick="editarResena"
+        android:src="@mipmap/edit"
+        android:tint="@color/white"
+        android:visibility="gone"
+        app:fabCustomSize="46dp"
+        app:layout_constraintBottom_toTopOf="@id/fab_resena"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_resena"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="74dp"
         android:clickable="true"
         android:onClick="nuevaResena"
         android:src="@mipmap/comment"
         android:tint="@color/white"
+        app:fabCustomSize="46dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -111,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_resena_autor"
                 android:layout_width="70dp"
                 android:layout_height="70dp"

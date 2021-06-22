@@ -78,6 +78,14 @@ public class Calendar extends AppCompatActivity {
 
     private void mostrarEventos(List<Evento> eventoArray) {
         CalendarAdapter calendarAdapter = new CalendarAdapter(this, eventoArray);
+        calendarAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Calendar.this, EventoActivity.class);
+                intent.putExtra("evento", eventoArray.get(rv_calendario.getChildAdapterPosition(v)));
+                startActivity(intent);
+            }
+        });
         rv_calendario.setAdapter(calendarAdapter);
         rv_calendario.setLayoutManager(new LinearLayoutManager(this));
     }

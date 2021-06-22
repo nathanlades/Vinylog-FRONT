@@ -111,10 +111,14 @@ public class Signin2 extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(Signin2.this,"Usuario registrado", Toast.LENGTH_SHORT).show();
-                        Intent intent =  new Intent(Signin2.this, MainActivity.class);
-                        intent.putExtra("usuarioIntent", usuario);
-                        startActivity(intent);
+                        if (response.contains("error")){
+                            Toast.makeText(Signin2.this, "El usuario o el mail ya están registrados", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Signin2.this,"Usuario registrado", Toast.LENGTH_SHORT).show();
+                            Intent intent =  new Intent(Signin2.this, MainActivity.class);
+                            intent.putExtra("usuarioIntent", usuario);
+                            startActivity(intent);
+                        }
                     }
                 },
                 new Response.ErrorListener() {

@@ -14,6 +14,7 @@
         android:textAlignment="center"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:fontFamily="@font/cambria"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textAlignment="center"
+        android:fontFamily="@font/cambria"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_calendario_evento_dia" />
 
@@ -32,6 +34,7 @@
         android:layout_height="50dp"
         android:backgroundTint="@color/white"
         android:scaleType="fitXY"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/tv_calendario_evento_mes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_calendario_evento_mes"
@@ -43,6 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:text="TextView"
+        android:textSize="16sp"
+        android:fontFamily="@font/cambria"
         app:layout_constraintEnd_toStartOf="@+id/iv_calendario_evento_entrada"
         app:layout_constraintStart_toEndOf="@+id/tv_calendario_evento_dia"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,6 +60,7 @@
         android:layout_marginEnd="2dp"
         android:backgroundTint="@color/white"
         android:scaleType="centerInside"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/iv_calendario_evento"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/tickets" />
@@ -66,6 +72,7 @@
         android:layout_marginStart="6dp"
         android:layout_marginTop="2dp"
         android:text="TextView"
+        android:fontFamily="@font/cambria"
         app:layout_constraintEnd_toStartOf="@+id/iv_calendario_evento_entrada"
         app:layout_constraintStart_toEndOf="@+id/tv_calendario_evento_dia"
         app:layout_constraintTop_toBottomOf="@+id/tv_calendario_evento_nombre" />
@@ -76,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="TextView"
+        android:fontFamily="@font/cambria"
         app:layout_constraintEnd_toStartOf="@+id/iv_calendario_evento"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tv_calendario_evento_hora"
