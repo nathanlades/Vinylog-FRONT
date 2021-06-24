@@ -33,6 +33,7 @@ import java.util.Map;
 
 import POJO.Perfil;
 import POJO.Resena;
+import metodosExternos.Likes;
 
 public class FeedActivity extends AppCompatActivity {
 
@@ -41,11 +42,14 @@ public class FeedActivity extends AppCompatActivity {
     Perfil perfil;
     String userLoggedIn = "";
     ImageButton logOut;
+    TextView tv_no_feed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+        tv_no_feed = findViewById(R.id.tvNoFeed);
+        tv_no_feed.setVisibility(View.INVISIBLE);
         rv = findViewById(R.id.rvFeed);
         logOut = findViewById(R.id.ibLogOut);
 
@@ -70,6 +74,7 @@ public class FeedActivity extends AppCompatActivity {
                     mostrarFeed(resenaArray);
                 } else {
                     rv.setVisibility(View.INVISIBLE);
+                    tv_no_feed.setVisibility(View.VISIBLE);
                     Toast.makeText(FeedActivity.this, "No se encuentran publicaciones", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -1,5 +1,7 @@
 package com.example.vinyl;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,7 +35,6 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,8 +42,11 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import POJO.Perfil;
@@ -52,7 +56,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     RecyclerView rv_grid;
     Perfil perfil;
-    String URL = "", URL2 = "";
+    String URL = "", URLNumTemas = "", URLNumDiscos = "", URLNumArtistas = "",
+    URLSeguidores = "", URLSeguidos = "";
     ImageButton ib_edit_profile, ib_log_out;
     ImageView iv_profile_pic;
     TextView tv_num_reviews, tv_num_followers, tv_num_followed, tv_name, tv_bio, tv_no_resenas;
@@ -66,27 +71,30 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ib_edit_profile = findViewById(R.id.ibEditProfile);
         ib_log_out = findViewById(R.id.ibLogOut);
-        iv_profile_pic = findViewById(R.id.ivProfilePic);
+        iv_profile_pic = findViewById(R.id.ivProfilePicProfile);
         tv_num_reviews = findViewById(R.id.tvNumReviews);
         tv_num_followers = findViewById(R.id.tvNumFollowers);
         tv_num_followed = findViewById(R.id.tvNumFollowed);
         tv_name = findViewById(R.id.tvNameProfile);
         tv_bio = findViewById(R.id.tvBioProfile);
         btn_song = findViewById(R.id.btnSongProfile);
+        btn_song.setVisibility(View.GONE);
         btn_album = findViewById(R.id.btnAlbumProfile);
         btn_artist = findViewById(R.id.btnArtistProfile);
         tv_no_resenas = findViewById(R.id.tvNoResenas);
         rv_grid = findViewById(R.id.rvGrid);
+        //perfil = getIntent().getParcelableExtra("perfilIntent");
 
         perfil = recuperarPreferencias();
 
         URL = getResources().getString(R.string.url) + "cargarGridDiscos.php";
-        URL2 = getResources().getString(R.string.url) + "cargarNumsPerfil.php";
-        userLoggedIn = perfil.getUsuario();
+        //URLNumTemas = getResources().getString(R.string.url) + "cargarNumResenasTemas.php";
+        URLNumDiscos = getResources().getString(R.string.url) + "cargarNumResenasDiscos.php";
+        URLNumArtistas = getResources().getString(R.string.url) + "cargarNumResenasArtistas.php";
+        URLSeguidores = getResources().getString(R.string.url) + "cargarNumSeguidores.php";
+        URLSeguidos = getResources().getString(R.string.url) + "cargarNumSeguidos.php";
 
-        // Con esta línea supuestamente se carga la ruta de la imagen del servidor y se muestra en
-        // el ImageView, pero no soy capaz de que funcione.
-        //Picasso.get().load(perfil.getFoto()).into(iv_profile_pic);
+        userLoggedIn = perfil.getUsuario();
 
         mostrarPerfil();
 
@@ -131,12 +139,199 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void mostrarPerfil() {
-        //Glide.with(this).load(perfil.getFoto()).into(iv_profile_pic);
-        //tv_num_reviews = findViewById(R.id.tvNumReviews);
-        //tv_num_followers = findViewById(R.id.tvNumFollowers);
-        //tv_num_followed = findViewById(R.id.tvNumFollowed);
+        Glide.with(this).load(perfil.getFoto()).into(iv_profile_pic);
+        cargarNumResenas2(URLNumDiscos, userLoggedIn);
+        cargarNumSeguidores(URLSeguidores, userLoggedIn);
+        cargarNumSeguidos(URLSeguidos, userLoggedIn);
         tv_name.setText(perfil.getNombre());
         tv_bio.setText(perfil.getBiografia());
+    }
+
+    /*
+    private void cargarNumResenas(String URL, String userLoggedIn) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.contains("{")) {
+                    Gson gson = new Gson();
+                    Type resenaListType = new TypeToken<ArrayList<Resena>>() {
+                    }.getType();
+                    List<Resena> resenaArray = gson.fromJson(response, resenaListType);
+                    cargarNumResenas2(URLNumDiscos, userLoggedIn, resenaArray);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ProfileActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("usuario", userLoggedIn);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+    */
+
+    private void cargarNumResenas2(String URL, String userLoggedIn) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.contains("{")) {
+                    Gson gson = new Gson();
+                    Type resenaListType = new TypeToken<ArrayList<Resena>>() {
+                    }.getType();
+                    List<Resena> resenaArray = gson.fromJson(response, resenaListType);
+                    cargarNumResenas3(URLNumArtistas, userLoggedIn, resenaArray);
+                } else {
+                    cargarNumResenas3SinDiscos(URLNumArtistas, userLoggedIn);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ProfileActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("usuario", userLoggedIn);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void cargarNumResenas3(String URL, String userLoggedIn, List<Resena> resenaArray) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.contains("{")) {
+                    Gson gson = new Gson();
+                    Type resenaListType = new TypeToken<ArrayList<Resena>>() {
+                    }.getType();
+                    List<Resena> resenaArray2 = gson.fromJson(response, resenaListType);
+                    resenaArray.addAll(resenaArray2);
+                    tv_num_reviews.setText(String.valueOf(resenaArray.size()));
+                } else {
+                    tv_num_reviews.setText(String.valueOf(resenaArray.size()));
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ProfileActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("usuario", userLoggedIn);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void cargarNumResenas3SinDiscos(String URL, String userLoggedIn) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.contains("{")) {
+                    Gson gson = new Gson();
+                    Type resenaListType = new TypeToken<ArrayList<Resena>>() {
+                    }.getType();
+                    List<Resena> resenaArray = gson.fromJson(response, resenaListType);
+                    tv_num_reviews.setText(String.valueOf(resenaArray.size()));
+                } else {
+                    tv_num_reviews.setText("0");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ProfileActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("usuario", userLoggedIn);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void cargarNumSeguidores(String URL, String userLoggedIn) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.contains("{")) {
+                    Gson gson = new Gson();
+                    Type perfilListType = new TypeToken<ArrayList<Perfil>>() {
+                    }.getType();
+                    List<Perfil> perfilArray = gson.fromJson(response, perfilListType);
+                    tv_num_followers.setText(String.valueOf(perfilArray.size()));
+                } else {
+                    tv_num_followers.setText("0");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ProfileActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("usuario", userLoggedIn);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void cargarNumSeguidos(String URL, String userLoggedIn) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.contains("{")) {
+                    Gson gson = new Gson();
+                    Type perfilListType = new TypeToken<ArrayList<Perfil>>() {
+                    }.getType();
+                    List<Perfil> perfilArray = gson.fromJson(response, perfilListType);
+                    tv_num_followed.setText(String.valueOf(perfilArray.size()));
+                } else {
+                    tv_num_followed.setText("0");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ProfileActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("usuario", userLoggedIn);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
     private void cargarGrid(String URL, String userLoggedIn) {
@@ -184,7 +379,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         rv_grid.setVisibility(View.INVISIBLE);
-        GridAdapter grid = new GridAdapter(this, cover);
+        GridAdapter grid = new GridAdapter(this, cover, resenaArray, perfil);
         rv_grid.setAdapter(grid);
         rv_grid.setLayoutManager(new GridLayoutManager(this, 3));
         rv_grid.setVisibility(View.VISIBLE);

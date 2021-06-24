@@ -15,15 +15,17 @@
         android:background="@color/vinyl_red"
         android:backgroundTint="@color/vinyl_red"
         android:gravity="center"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/iv_logo_white_top"
-            android:layout_width="wrap_content"
-            android:layout_height="22dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="15dp"
             app:srcCompat="@mipmap/logo_blank" />
     </LinearLayout>
 
@@ -187,7 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/feed_blank_description"
-            android:padding="6dp"
+            android:padding="10dp"
             android:onClick="fromHeretoFeed"
             app:srcCompat="@mipmap/feed_blank" />
 
@@ -198,7 +200,7 @@
             android:layout_weight="1"
             android:background="@color/vinyl_red"
             android:contentDescription="@string/search_blank_description"
-            android:padding="6dp"
+            android:padding="10dp"
             android:onClick="fromHeretoSearch"
             app:srcCompat="@mipmap/search_blank" />
 
@@ -208,7 +210,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/calendar_blank_description"
-            android:padding="6dp"
+            android:padding="10dp"
             android:onClick="fromHeretoCalendar"
             app:srcCompat="@mipmap/calendar_blank" />
 
@@ -218,7 +220,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/profile_blank_description"
-            android:padding="6dp"
+            android:padding="10dp"
             android:onClick="fromHeretoProfile"
             app:srcCompat="@mipmap/profile_blank" />
 

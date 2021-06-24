@@ -23,9 +23,9 @@
             android:background="@color/vinyl_red"
             android:backgroundTintMode="screen"
             android:contentDescription="@string/btn_edit_profile_description"
+            android:onClick="editarPerfil"
             android:padding="10dp"
             android:scaleType="centerInside"
-            android:onClick="editarPerfil"
             app:srcCompat="@mipmap/edit_profile_blank" />
 
         <ImageView
@@ -65,6 +65,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/menuSuperiorProfile">
 
+        <!--de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProfilePicProfile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/profile_pic_description"
+            android:paddingHorizontal="15dp"
+            android:paddingTop="15dp"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/mccartney" /-->
+
         <ImageView
             android:id="@+id/ivProfilePicProfile"
             android:layout_width="0dp"
@@ -96,8 +107,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="bottom|center"
-                    android:textStyle="bold"
-                    android:text="@string/tv_num_reviews" />
+                    android:text="@string/tv_num_reviews"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvNumFollowers"
@@ -105,8 +116,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="bottom|center"
-                    android:textStyle="bold"
-                    android:text="@string/tv_num_followers" />
+                    android:text="@string/tv_num_followers"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvNumFollowed"
@@ -114,8 +125,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="bottom|center"
-                    android:textStyle="bold"
-                    android:text="@string/tv_num_followed" />
+                    android:text="@string/tv_num_followed"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -163,17 +174,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:paddingBottom="5dp"
                 android:paddingHorizontal="25dp"
-                android:textStyle="bold"
-                android:text="@string/tv_name" />
+                android:paddingBottom="5dp"
+                android:text="@string/tv_name"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvBioProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="10dp"
                 android:paddingHorizontal="25dp"
+                android:paddingBottom="10dp"
                 android:text="@string/tv_bio" />
 
         </LinearLayout>
@@ -184,42 +195,42 @@
         android:id="@+id/sections"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal"
         android:background="@color/vinyl_red"
-        app:layout_constraintTop_toBottomOf="@id/infoProfile"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/infoProfile">
 
         <Button
             android:id="@+id/btnSongProfile"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:backgroundTint="@color/vinyl_red"
             android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/vinyl_red"
             android:onClick="filterSelected"
             android:text="@string/btn_song" />
 
         <Button
             android:id="@+id/btnAlbumProfile"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:backgroundTint="@color/vinyl_selected_red"
             android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/vinyl_selected_red"
             android:onClick="filterSelected"
             android:text="@string/btn_album" />
 
         <Button
             android:id="@+id/btnArtistProfile"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:backgroundTint="@color/vinyl_red"
             android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/vinyl_red"
             android:onClick="filterSelected"
             android:text="@string/btn_artist" />
     </LinearLayout>
@@ -229,21 +240,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_no_resenas"
-        android:textStyle="bold"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/sections"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/menuInferiorProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/menuInferiorProfile"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sections" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvGrid"
+    <LinearLayout
+        android:id="@+id/llayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sections" >
+        app:layout_constraintTop_toBottomOf="@id/sections">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvGrid"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
 
     <!-- *************************************************************************************** -->
 
