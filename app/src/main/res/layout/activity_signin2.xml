@@ -14,15 +14,17 @@
         android:background="@color/vinyl_red"
         android:backgroundTint="@color/vinyl_red"
         android:gravity="center"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/iv_logo_white_top"
-            android:layout_width="wrap_content"
-            android:layout_height="22dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="15dp"
             app:srcCompat="@mipmap/logo_blank" />
     </LinearLayout>
 
@@ -115,15 +117,17 @@
         android:layout_height="50dp"
         android:background="@color/vinyl_red"
         android:gravity="center"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/iv_feed_buscador"
-            android:layout_width="wrap_content"
-            android:layout_height="22dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="15dp"
             app:srcCompat="@mipmap/logo_blank" />
     </LinearLayout>
 

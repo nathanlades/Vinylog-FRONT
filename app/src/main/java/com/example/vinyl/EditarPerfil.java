@@ -41,10 +41,11 @@ public class EditarPerfil extends AppCompatActivity {
         setContentView(R.layout.activity_editar_perfil);
         ib_ok = findViewById(R.id.ibOkEdit);
         ib_cancel = findViewById(R.id.ibCancelEdit);
-        iv_profile_pic = findViewById(R.id.ivProfilePic);
+        iv_profile_pic = findViewById(R.id.ivEditProfilePic);
         et_profile_name = findViewById(R.id.etEditProfileName);
         et_user_name = findViewById(R.id.etEditUserName);
         et_bio = findViewById(R.id.etEditBio);
+        //perfil = getIntent().getParcelableExtra("perfilIntent");
 
         perfil = recuperarPreferencias();
 
@@ -54,7 +55,7 @@ public class EditarPerfil extends AppCompatActivity {
     }
 
     private void cargarDatos() {
-        //Glide.with(this).load(perfil.getFoto()).into(iv_profile_pic);
+        Glide.with(this).load(perfil.getFoto()).into(iv_profile_pic);
         et_profile_name.setText(perfil.getNombre());
         et_user_name.setText(perfil.getUsuario());
         et_bio.setText(perfil.getBiografia());
@@ -80,13 +81,12 @@ public class EditarPerfil extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 perfilJSON = response;
-                Perfil perfil = new Gson().fromJson(response, Perfil.class);
+                Perfil p = new Gson().fromJson(response, Perfil.class);
                 if (perfilJSON.contains("{")) {
-                    guardarPreferencias();
-                    perfil = recuperarPreferencias();
+                    guardarPreferencias(nombre_profile, nombre_user, biogr);
                     Toast.makeText(EditarPerfil.this, "Cambios guardados", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(EditarPerfil.this, ProfileActivity.class);
-                    intent.putExtra("perfilIntent", perfil);
+                    intent.putExtra("perfilIntent", p);
                     startActivity(intent);
                 }
             }
@@ -110,12 +110,12 @@ public class EditarPerfil extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    private void guardarPreferencias(){
+    private void guardarPreferencias(String profile_name, String user_name, String bio){
         SharedPreferences sharedPreferences = getSharedPreferences("preferenciasLogin",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("nombre", nombre_perfil);
-        editor.putString("usuario", nombre_usuario);
-        editor.putString("biografia", biografia);
+        editor.putString("nombre", profile_name);
+        editor.putString("usuario", user_name);
+        editor.putString("biografia", bio);
         editor.putBoolean("session", true);
         editor.putString("perfilJSON", perfilJSON);
         editor.commit();
