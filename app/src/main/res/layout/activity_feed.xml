@@ -25,6 +25,7 @@
             android:contentDescription="@string/btn_new_review_description"
             android:padding="10dp"
             android:scaleType="centerInside"
+            android:onClick="fromFeedtoSearch"
             app:srcCompat="@mipmap/new_review_blank" />
 
         <ImageView

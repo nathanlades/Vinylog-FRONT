@@ -87,10 +87,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         perfil = recuperarPreferencias();
 
-        URL = getResources().getString(R.string.url) + "cargarGridDiscos.php";
+        URL = getResources().getString(R.string.url) + "cargarResenasDiscos.php";
         //URLNumTemas = getResources().getString(R.string.url) + "cargarNumResenasTemas.php";
-        URLNumDiscos = getResources().getString(R.string.url) + "cargarNumResenasDiscos.php";
-        URLNumArtistas = getResources().getString(R.string.url) + "cargarNumResenasArtistas.php";
+        URLNumDiscos = getResources().getString(R.string.url) + "cargarResenasDiscos.php";
+        URLNumArtistas = getResources().getString(R.string.url) + "cargarResenasArtistas.php";
         URLSeguidores = getResources().getString(R.string.url) + "cargarNumSeguidores.php";
         URLSeguidos = getResources().getString(R.string.url) + "cargarNumSeguidos.php";
 
@@ -104,13 +104,13 @@ public class ProfileActivity extends AppCompatActivity {
     public void filtrar() {
         switch (option) {
             case 0:
-                cargarGrid(URL = getResources().getString(R.string.url) + "cargarGridTemas.php", userLoggedIn);
+                cargarGrid(URL = getResources().getString(R.string.url) + "cargarResenasTemas.php", userLoggedIn);
                 break;
             case 1:
-                cargarGrid(URL = getResources().getString(R.string.url) + "cargarGridDiscos.php", userLoggedIn);
+                cargarGrid(URL = getResources().getString(R.string.url) + "cargarResenasDiscos.php", userLoggedIn);
                 break;
             case 2:
-                cargarGrid(URL = getResources().getString(R.string.url) + "cargarGridArtistas.php", userLoggedIn);
+                cargarGrid(URL = getResources().getString(R.string.url) + "cargarResenasArtistas.php", userLoggedIn);
                 break;
         }
     }
