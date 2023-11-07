@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.LoginFilter;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -29,11 +31,17 @@ public class Portada extends AppCompatActivity {
             @Override
             public void run() {
                 SharedPreferences sharedPreferences = getSharedPreferences("preferenciasLogin", MODE_PRIVATE);
+                String perfilJSON = sharedPreferences.getString("perfilJSON","");
                 boolean session = sharedPreferences.getBoolean("session", false);
+                String bool = String.valueOf(session);
+                Log.println(Log.INFO,"a", perfilJSON);
+                Log.println(Log.INFO,"a", bool);
+
                 if (session){
                     Intent intent = new Intent(Portada.this, FeedActivity.class);
-                    String perfilJSON = sharedPreferences.getString("perfilJSON","");
+                    //String perfilJSON = sharedPreferences.getString("perfilJSON","");
                     Perfil perfil = new Gson().fromJson(perfilJSON, Perfil.class);
+                    Log.println(Log.INFO, "a", perfil.getNombre());
                     intent.putExtra("perfilIntent", perfil);
                     startActivity(intent);
                     finish();

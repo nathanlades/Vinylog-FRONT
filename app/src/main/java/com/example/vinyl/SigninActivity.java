@@ -27,8 +27,8 @@ public class SigninActivity extends AppCompatActivity {
         etPass1 = findViewById(R.id.et_pass1);
         etPass2 = findViewById(R.id.et_pass2);
         etMail = findViewById(R.id.et_mail);
-        etFecha_nac = findViewById(R.id.et_fecha_nac);
-        etNombre = findViewById(R.id.et_nombre);
+//        etFecha_nac = findViewById(R.id.et_fecha_nac);
+//        etNombre = findViewById(R.id.et_nombre);
         btRegistro = findViewById(R.id.bt_signin);
 //        spLocalidad = findViewById(R.id.sp_poblacion);
 //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sp_poblacion, android.R.layout.simple_spinner_dropdown_item);

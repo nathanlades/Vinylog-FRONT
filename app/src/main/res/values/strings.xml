@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Vinyl</string>
+    <string name="app_name">Vinylog</string>
 
     <!-- Strings del activity login -->
-    <string name="bienvenido">Bienvenido a Vinyl</string>
+    <string name="bienvenido">Bienvenido a Vinylog</string>
     <string name="login">Login</string>
     <string name="user">Usuario o email</string>
     <string name="pass">Contraseña</string>
@@ -125,8 +125,9 @@
 
 
     <!-- STRING PARA LA URL DE CONEXIÓN -->
-    <string name="url">http://95.39.184.89/vinyl/</string>
+    <string name="url_old">http://95.39.184.89/vinyl/</string>
     <string name="url_local_will">http://192.168.1.93/</string>
+    <string name="url">http://192.168.1.137/vinylog_backend/</string>
 
     <!-- String para la vista de Artista -->
     <string name="tv_artista_bio_titulo">Biografía</string>

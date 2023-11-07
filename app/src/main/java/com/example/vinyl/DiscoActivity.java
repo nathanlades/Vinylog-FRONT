@@ -235,9 +235,18 @@ public class DiscoActivity extends AppCompatActivity {
         bt_artista_resena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setType("image/*");
-                startActivityForResult(photoPickerIntent, 1);
+                String titulo = et_artista_resena_titulo.getText().toString();
+                String texto = et_artista_resena.getText().toString();
+                String puntuacion = tv_artista_resena_puntuacion.getText().toString();
+                String id_perfil, id_disco;
+                id_perfil = recuperarIdPerfil();
+                id_disco = String.valueOf(disco.getId());
+
+                if(!titulo.equals("") && !texto.equals("")){
+                    guardarResena(titulo,texto,puntuacion,id_perfil,id_disco);
+                } else {
+                    Toast.makeText(DiscoActivity.this, "Tanto el título como el texto deben estar rellenos.", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });
