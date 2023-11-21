@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Log.println(Log.INFO, "a", "CACA POLLA CULO 3");
+        Log.println(Log.INFO, "a", "Se abre la página de login");
         etUsuario = findViewById(R.id.et_user);
         etPass = findViewById(R.id.et_pass);
         btLogin = findViewById(R.id.bt_login);
